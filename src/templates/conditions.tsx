@@ -27,7 +27,9 @@ export const config: TemplateConfig = {
       "uid",
       "slug",
       "taxonomy_synonyms",
-      "c_relatedSpecialties",
+      "c_relatedSpecialties.id",
+      "c_relatedSpecialties.name",
+      "c_relatedSpecialties.slug",
     ],
     filter: {
       entityTypes: ["taxonomy_conditionTreated"],
