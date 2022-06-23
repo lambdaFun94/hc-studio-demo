@@ -1,5 +1,4 @@
-import * as React from "react";
-import Cta from "../components/cta";
+import CTAButton from "./CTAButton";
 
 type Address = {
   line1: string;
@@ -27,7 +26,6 @@ const Contact = (props: any) => {
   return (
     <>
       <div className="grid gap-y-5">
-        <div className="text-xl font-semibold">Contact</div>
         <div className="grid gap-y-3">
           <div className="">{renderPrettyAddress(address)}</div>
           <div>
@@ -35,7 +33,11 @@ const Contact = (props: any) => {
           </div>
         </div>
         <div className="w-30">
-          <Cta buttonText="Order Online" url="#" style="primary-cta"></Cta>
+          <CTAButton
+            buttonText="Order Online"
+            url="#"
+            // style="primary-cta"
+          ></CTAButton>
         </div>
       </div>
     </>

@@ -1,5 +1,3 @@
-import * as React from "react";
-
 type Hours = {
   title?: string;
   hours: Week;
@@ -94,15 +92,13 @@ function isDayToday(dayName: string) {
 }
 
 function convertTo12HourFormat(time: string, includeMeridiem: boolean): string {
-  const timeParts = time.split(":");
+  const timeParts = time.split(':');
   let hour = Number(timeParts[0]);
   const minutesString = timeParts[1];
-  const meridiem = hour < 12 || hour === 24 ? "AM" : "PM"; // Set AM/PM
+  const meridiem = hour < 12 || hour === 24 ? 'AM' : 'PM'; // Set AM/PM
   hour = hour % 12 || 12; // Adjust hours
 
-  return (
-    hour.toString() + ":" + minutesString + (includeMeridiem ? meridiem : "")
-  );
+  return hour.toString() + ':' + minutesString + (includeMeridiem ? meridiem : '');
 }
 
 type DayRow = {
@@ -115,14 +111,14 @@ const DayRow = (props: DayRow) => {
   const { dayName, day, isToday } = props;
 
   return (
-    <tr className={isToday ? "bg-gray-200 font-bold" : ""}>
+    <tr className={isToday ? 'bg-gray-200 font-bold rounded-xl' : ''}>
       <td className="capitalize text-left pl-1 pr-4">
         <span>{dayName}</span>
       </td>
       {!day.isClosed && (
         <td className="pr-1">
           <span>
-            {convertTo12HourFormat(day.openIntervals[0].start, true)} -{" "}
+            {convertTo12HourFormat(day.openIntervals[0].start, true)} -{' '}
             {convertTo12HourFormat(day.openIntervals[0].end, true)}
           </span>
         </td>

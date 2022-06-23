@@ -1,9 +1,27 @@
-import * as React from "react";
+type Link = {
+  label: string;
+  url: string;
+};
+
+type Links = {
+  links: Link[];
+};
+
+// const formatLinks = (array: Links) => {
+//     return (
+//         array.forEach(link => {
+//             <>
+//                 <div>{link.label}.link({link.url})</div>
+//             </>
+//         })
+//     )
+// };
 
 const Footer = () => {
   return (
     <footer className="">
       <div className="flex flex-col flex-wrap justify-center p-5 md:flex-row">
+        {/* <div>{formatLinks(links)}</div> */}
         <span className="inline-flex justify-center w-full mx-auto mt-2 mr-2 sm:ml-auto sm:mt-0 space-x-3">
           <a className="text-black hover:text-blue-500">
             <svg
@@ -64,10 +82,7 @@ const Footer = () => {
       </div>
       <div className="w-full px-8 mt-4 rounded-b-lg bg-blueGray-50">
         <div className="container inline-flex flex-col flex-wrap items-center px-5 py-6 mx-auto sm:flex-row">
-          <p className="mx-auto text-sm text-center text-black sm:text-left ">
-            {" "}
-            © 2021{" "}
-          </p>
+          <p className="mx-auto text-sm text-center text-black sm:text-left "> © 2021 </p>
         </div>
       </div>
     </footer>

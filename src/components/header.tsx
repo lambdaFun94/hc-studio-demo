@@ -1,42 +1,53 @@
-import * as React from "react";
-import Cta from "../components/cta";
-
-export type Link = {
+type Link = {
   label: string;
+  uRL: string;
+};
+
+type Image = {
   url: string;
 };
 
+type Logo = {
+  height?: number;
+  width?: number;
+  image: Image;
+};
+
 type Header = {
-  links: Link[];
-  logo: string;
+  name: string;
+  header: Array<Link>;
+  primaryColor: string;
+  secondaryColor: string;
+  font: string;
+  googleAnalytics: Array<Link>;
+  logo: Logo;
 };
 
 const Header = (props: Header) => {
-  const { links, logo } = props;
-  const linkDoms = links.map((link) => (
-    <div key={link.label}>
-      <a href={link.url} target="_blank" rel="noreferrer">
+  const {
+    name,
+    header,
+    primaryColor,
+    secondaryColor,
+    font,
+    googleAnalytics,
+    logo,
+  } = props;
+  const headerLinks = header.map((link) => (
+    <div>
+      <a key="uRL" href={link.uRL} className="hover:underline">
         {link.label}
       </a>
     </div>
   ));
-
   return (
     <>
       <div className="centered-container">
         <nav className="py-6 flex items-center justify-between">
-          <img src={logo} width="50" height="50"></img>
-          <div className="text-2xl font-semibold">
-            Yext&apos;s Fashion Warehouse
-          </div>
-          <div className="flex gap-x-10 text-lg font-semibold">{linkDoms}</div>
-          <div className="space-x-5">
-            <Cta buttonText="Order Pickup" url="#" style="primary-cta"></Cta>
-            <Cta
-              buttonText="Order Delivery"
-              url="#"
-              style="secondary-cta"
-            ></Cta>
+          <img src={logo.image.url} width="120" height="120"></img>
+          <div className="text-2xl font-semibold">{name}</div>
+          <div className="flex gap-x-10 text-lg font-semibold">
+            {headerLinks}
           </div>
         </nav>
       </div>

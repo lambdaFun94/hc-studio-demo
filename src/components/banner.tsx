@@ -1,4 +1,4 @@
-import * as React from "react";
+import Cta from "./CTAButton";
 
 export type Address = {
   line1: string;
@@ -10,8 +10,8 @@ export type Address = {
 
 type Banner = {
   name?: string;
-  address?: Address;
-  openTime?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
   children?: React.ReactNode;
 };
 
@@ -28,15 +28,24 @@ const renderPrettyAddress = (address?: Address) => {
 };
 
 const Banner = (props: Banner) => {
-  const { name, address, openTime, children } = props;
+  const { name, primaryColor, secondaryColor, children } = props;
 
   return (
     <>
-      <div className="bg-red-900 text-5xl font-bold text-white p-10 flex items-center justify-center flex-row space-x-20 w-full">
+      <div
+        className="text-5xl font-bold text-white p-10 flex items-center justify-center flex-row space-x-20 w-full drop-shadow-md"
+        style={{ background: primaryColor ? primaryColor : "#000000" }}
+      >
         <div className="flex-col space-y-10 text-center">
           <div>{name}</div>
-          <div>{renderPrettyAddress(address)}</div>
-          <div>Open Until {openTime}</div>
+        </div>
+        <div className="bg-white h-40 w-1/5 flex items-center justify-center text-center flex-col space-y-4 rounded-lg">
+          <div className="text-black text-base">Visit Us Today!</div>
+          <Cta
+            buttonText="Get Directions"
+            url="http://google.com"
+            color={secondaryColor}
+          />
         </div>
         {children}
       </div>
