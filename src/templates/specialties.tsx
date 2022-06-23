@@ -10,11 +10,7 @@ import * as React from "react";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
 import "../index.css";
-import {
-  HealthcareProfessional,
-  HealthcareProfessionalCustomFields,
-  Taxonomy_Specialty,
-} from "../types/kg";
+import { Taxonomy_Specialty } from "../types/kg";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -60,17 +56,17 @@ export const config: TemplateConfig = {
   },
 };
 
-export const getPath: GetPath<Data> = (data) => {
-  return `${data.document.streamOutput.slug}`;
+export const getPath: GetPath<Data> = ({ document }) => {
+  const specialty = document.streamOutput as Taxonomy_Specialty;
+  return `${specialty.slug}`;
 };
 
 export const getHeadConfig: GetHeadConfig<Data> = ({
   document,
 }): HeadConfig => {
-  const doctor = document.streamOutput as HealthcareProfessional &
-    HealthcareProfessionalCustomFields;
+  const specialty = document.streamOutput as Taxonomy_Specialty;
   return {
-    title: doctor.name,
+    title: specialty.name,
     charset: "UTF-8",
     viewport: "width=device-width, initial-scale=1",
   };
