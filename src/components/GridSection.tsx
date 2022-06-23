@@ -1,10 +1,9 @@
 import cx from "classnames";
 import * as React from "react";
 import { useState } from "react";
-import { Image } from "../types/kg";
 import Card from "./Card";
 import Grid from "./Grid";
-import Img from "./Img";
+import Img, { Image } from "./Img";
 import Section from "./Section";
 
 type Props = {
@@ -41,7 +40,12 @@ const GridSection = ({ className, title, items }: Props) => {
                 <div className="flex gap-2">
                   {item.image && (
                     <div className="flex-none">
-                      <Img width={40} image={item.image} />
+                      <Img
+                        width={40}
+                        image={item.image}
+                        layout="fixed"
+                        className="rounded-md drop-shadow-md"
+                      />
                     </div>
                   )}
                   <div>

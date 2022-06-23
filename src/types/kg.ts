@@ -1,3 +1,5 @@
+import { Image } from "../components/Img";
+
 export type Address = {
   line1: string;
   line2?: string;
@@ -5,13 +7,6 @@ export type Address = {
   region: string;
   postalCode: string;
   countryCode: string;
-};
-
-export type Image = {
-  height: number;
-  thumbnails: {
-    url: string;
-  }[];
 };
 
 export type Taxonomy_Condition = {

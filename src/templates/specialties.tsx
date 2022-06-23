@@ -12,6 +12,7 @@ import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
 import "../index.css";
 import { Taxonomy_Specialty } from "../types/kg";
+import { sortProps } from "../utilities";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -65,15 +66,13 @@ export const getPath: GetPath<Data> = ({ document }) => {
 export const getStaticProps: GetStaticProps<Data> = async (input) => {
   var specialty = input.document.streamOutput as Taxonomy_Specialty;
 
-  specialty.c_providersWithSpecialty = specialty.c_providersWithSpecialty?.sort(
-    (a, b) => a.name.localeCompare(b.name)
-  );
-  specialty.taxonomy_relatedConditions =
-    specialty.taxonomy_relatedConditions?.sort((a, b) =>
-      a.name.localeCompare(b.name)
-    );
-
-  input.document.streamOutput = specialty;
+  specialty = sortProps(specialty, [
+    "c_providersWithSpecialty",
+    "taxonomy_relatedConditions",
+    "taxonomy_relatedReasonsForVisit",
+    "taxonomy_subspecialties",
+    "taxonomy_relatedProcedures",
+  ]);
 
   return input;
 };
@@ -91,6 +90,8 @@ export const getHeadConfig: GetHeadConfig<Data> = ({
 
 const SpecialtyPage: Default<Data> = ({ document }) => {
   const specialty = document.streamOutput as Taxonomy_Specialty;
+
+  console.log(specialty.c_providersWithSpecialty);
   const subtitle =
     specialty.taxonomy_synonyms?.length > 0
       ? `aka ${specialty.taxonomy_synonyms?.join(", ")}`

@@ -1,7 +1,6 @@
 import * as React from "react";
 import "../index.css";
-import { Image } from "../types/kg";
-import Img from "./Img";
+import Img, { Image } from "./Img";
 
 type Props = {
   title: string;
