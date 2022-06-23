@@ -13,7 +13,7 @@ const Card = ({ className, children, href }: Props) => {
     <a
       className={cx(
         className,
-        "bg-gray-100 rounded-sm p-4 border hover:bg-white hover:shadow-md transition-all hover:scale-105"
+        "bg-gray-100 rounded-sm p-4 border hover:bg-white hover:shadow-md transition-transform hover:scale-105"
       )}
       href={href}
     >
