@@ -3,6 +3,7 @@ import {
   Default,
   GetHeadConfig,
   GetPath,
+  GetStaticProps,
   HeadConfig,
   TemplateConfig,
 } from "@yext/yext-sites-scripts";
@@ -59,6 +60,22 @@ export const config: TemplateConfig = {
 export const getPath: GetPath<Data> = ({ document }) => {
   const specialty = document.streamOutput as Taxonomy_Specialty;
   return `${specialty.slug}`;
+};
+
+export const getStaticProps: GetStaticProps<Data> = async (input) => {
+  var specialty = input.document.streamOutput as Taxonomy_Specialty;
+
+  specialty.c_providersWithSpecialty = specialty.c_providersWithSpecialty?.sort(
+    (a, b) => a.name.localeCompare(b.name)
+  );
+  specialty.taxonomy_relatedConditions =
+    specialty.taxonomy_relatedConditions?.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+
+  input.document.streamOutput = specialty;
+
+  return input;
 };
 
 export const getHeadConfig: GetHeadConfig<Data> = ({
