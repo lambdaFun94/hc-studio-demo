@@ -17,7 +17,7 @@ import {
 
 export const config: TemplateConfig = {
   stream: {
-    $id: "doctors-fad-234",
+    $id: "pros-fad-234",
     fields: [
       "name",
       "meta",
@@ -38,7 +38,7 @@ export const config: TemplateConfig = {
       "slug",
     ],
     filter: {
-      entityTypes: ["ce_doctor"],
+      entityTypes: ["healthcareProfessional"],
     },
     // The entity language profiles that documents will be generated for.
     localization: {
