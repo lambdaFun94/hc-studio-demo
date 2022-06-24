@@ -64,7 +64,7 @@ const GridSection = ({ className, title, items }: Props) => {
         {!showAll && items.length > 12 && (
           <div className="flex items-center justify-center p-4">
             <button
-              className="px-2 py-1 bg-gray-100 rounded-full text-sm hover:bg-gray-300 border border-gray-200"
+              className="px-4 py-1 bg-gray-100 rounded-full text-sm hover:bg-gray-300 border border-gray-200"
               onClick={() => setShowAll(true)}
             >
               Show All {items.length.toLocaleString()} {title}
