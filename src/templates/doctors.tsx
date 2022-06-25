@@ -70,8 +70,6 @@ const DoctorPage: Default<Data> = ({ document }) => {
   const doctor = document.streamOutput as HealthcareProfessional &
     HealthcareProfessionalCustomFields;
 
-  console.log(doctor);
-
   return (
     <PageLayout
       title={doctor.name}

@@ -29,7 +29,7 @@ export type Taxonomy_Specialty = {
   name: string;
   slug: string;
   taxonomy_relatedConditions: Taxonomy_Condition[];
-  taxonomy_relatedProcedures: Taxonomy_Procedure[];
+  c_relatedProcedures2: Taxonomy_Procedure[];
   taxonomy_subspecialties: Taxonomy_Subspecialty[];
   taxonomy_synonyms: string[];
   taxonomy_relatedReasonsForVisit: Taxonomy_ReasonForVisit[];
@@ -43,7 +43,7 @@ export type Taxonomy_Subspecialty = {
   slug: string;
   c_specialties: Taxonomy_Specialty[];
   taxonomy_relatedConditions: Taxonomy_Condition[];
-  taxonomy_relatedProcedures: Taxonomy_Procedure[];
+  c_relatedProcedures2: Taxonomy_Procedure[];
   taxonomy_subspecialties: Taxonomy_Specialty[];
   taxonomy_synonyms: string[];
   taxonomy_relatedReasonsForVisit: Taxonomy_ReasonForVisit[];
@@ -53,7 +53,7 @@ export type Taxonomy_Procedure = {
   id: string;
   name: string;
   slug: string;
-  taxonomy_synonyms: string[];
+  c_relatedSpecialties2: (Taxonomy_Specialty | Taxonomy_Subspecialty)[];
 };
 
 export type HealthcareProfessional = {

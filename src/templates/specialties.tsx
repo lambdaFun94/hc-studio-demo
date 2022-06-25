@@ -38,9 +38,9 @@ export const config: TemplateConfig = {
       "taxonomy_relatedReasonsForVisit.id",
       "taxonomy_relatedReasonsForVisit.name",
       "taxonomy_relatedReasonsForVisit.slug",
-      "taxonomy_relatedProcedures.id",
-      "taxonomy_relatedProcedures.name",
-      "taxonomy_relatedProcedures.slug",
+      "c_relatedSpecialties2.id",
+      "c_relatedSpecialties2.name",
+      "c_relatedSpecialties2.slug",
       "c_providersWithSpecialty.id",
       "c_providersWithSpecialty.name",
       "c_providersWithSpecialty.slug",
@@ -63,20 +63,6 @@ export const getPath: GetPath<Data> = ({ document }) => {
   return `${specialty.slug}`;
 };
 
-export const getStaticProps: GetStaticProps<Data> = async (input) => {
-  var specialty = input.document.streamOutput as Taxonomy_Specialty;
-
-  specialty = sortProps(specialty, [
-    "c_providersWithSpecialty",
-    "taxonomy_relatedConditions",
-    "taxonomy_relatedReasonsForVisit",
-    "taxonomy_subspecialties",
-    "taxonomy_relatedProcedures",
-  ]);
-
-  return input;
-};
-
 export const getHeadConfig: GetHeadConfig<Data> = ({
   document,
 }): HeadConfig => {
@@ -88,14 +74,27 @@ export const getHeadConfig: GetHeadConfig<Data> = ({
   };
 };
 
+export const getStaticProps: GetStaticProps<Data> = async (input) => {
+  var specialty = input.document.streamOutput as Taxonomy_Specialty;
+
+  input.document.streamOutput = sortProps(specialty, [
+    "c_providersWithSpecialty",
+    "taxonomy_relatedConditions",
+    "taxonomy_relatedReasonsForVisit",
+    "taxonomy_subspecialties",
+    "c_relatedProcedures2",
+  ]);
+
+  return input;
+};
 const SpecialtyPage: Default<Data> = ({ document }) => {
   const specialty = document.streamOutput as Taxonomy_Specialty;
 
-  console.log(specialty.c_providersWithSpecialty);
   const subtitle =
     specialty.taxonomy_synonyms?.length > 0
       ? `aka ${specialty.taxonomy_synonyms?.join(", ")}`
       : undefined;
+
   return (
     <PageLayout title={specialty.name} subtitle={subtitle}>
       <GridSection
@@ -116,7 +115,7 @@ const SpecialtyPage: Default<Data> = ({ document }) => {
       />
       <GridSection
         title="Related Procedures"
-        items={specialty.taxonomy_relatedProcedures}
+        items={specialty.c_relatedProcedures2}
       />
       <GridSection
         title="Reasons for Visit"
