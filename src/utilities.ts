@@ -4,3 +4,8 @@ export const sortProps = (obj: any, keys: string[]) => {
   });
   return obj;
 };
+
+export const defaultHeadConfig = {
+  charset: "UTF-8",
+  viewport: "width=device-width, initial-scale=1",
+};

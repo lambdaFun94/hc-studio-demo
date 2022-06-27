@@ -22,6 +22,10 @@ export type Taxonomy_ReasonForVisit = {
   name: string;
   slug: string;
   taxonomy_synonyms: string[];
+  taxonomy_relatedSpecialties?: (
+    | Taxonomy_Subspecialty
+    | Taxonomy_Subspecialty
+  )[];
 };
 
 export type Taxonomy_Specialty = {
