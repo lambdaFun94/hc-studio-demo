@@ -2,6 +2,7 @@ import { AnswersHeadlessProvider } from "@yext/answers-headless-react";
 import { SearchBar, UniversalResults } from "@yext/answers-react-components";
 import cx from "classnames";
 import * as React from "react";
+import DoctorCard from "./cards/DoctorCard";
 
 type Props = {
   //Insert Props Here
@@ -19,7 +20,10 @@ const UniversalSearchResults = ({ className }: Props) => {
         <SearchBar />
         <UniversalResults
           verticalConfigMap={{
-            locations: {},
+            healthcare_professionals: {
+              label: "Doctors",
+              CardComponent: DoctorCard,
+            },
           }}
         />
       </AnswersHeadlessProvider>
