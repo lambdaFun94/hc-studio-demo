@@ -38,7 +38,6 @@ const SearchResultsPage: Default<Data> = (data) => {
 
   return (
     <PageLayout title="Search Results">
-      <h1>Search Results</h1>
       <UniversalSearchResults />
     </PageLayout>
   );
