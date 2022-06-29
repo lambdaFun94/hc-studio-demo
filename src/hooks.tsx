@@ -1,16 +1,12 @@
-import { useAnswersActions } from "@yext/answers-headless-react";
+import {
+  useAnswersActions,
+  useAnswersState,
+} from "@yext/answers-headless-react";
 import { useEffect } from "react";
 
 export const useLoadStateFromURL = () => {
   const searchActions = useAnswersActions();
-
-  const setQueryParam = (name: string, value: any) => {
-    var queryParams = new URLSearchParams(window.location.search);
-    // Set new or modify existing parameter value.
-    queryParams.set("query", value);
-    // OR do a push to history
-    history.pushState(null, "", "?" + queryParams.toString());
-  };
+  const verticalKey = useAnswersState((s) => s.vertical.verticalKey);
 
   useEffect(() => {
     if (window) {
@@ -20,10 +16,19 @@ export const useLoadStateFromURL = () => {
       const { query } = params;
       if (query) {
         searchActions.setQuery(query);
-        searchActions.executeUniversalQuery();
+
+        if (verticalKey) {
+          searchActions.executeVerticalQuery();
+        } else {
+          searchActions.executeUniversalQuery();
+        }
+      } else {
+        if (verticalKey) {
+          searchActions.executeVerticalQuery();
+        }
       }
     }
-  }, []);
+  }, [verticalKey]);
 
-  return { setQueryParam };
+  return;
 };

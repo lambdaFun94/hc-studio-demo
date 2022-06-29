@@ -32,7 +32,7 @@ const PageLayout = ({
         })}
       >
         {breadcrumbs && <BreadCrumbs items={breadcrumbs} pageTitle={title} />}
-        <div className="flex gap-4">
+        <div className="flex gap-4 mt-4">
           {image && (
             <Img
               image={image}
@@ -46,7 +46,7 @@ const PageLayout = ({
             {subtitle && <div className="text-gray-700 mb-4">{subtitle}</div>}
           </div>
         </div>
-        <div className="flex flex-col gap-8 my-8">{children}</div>
+        <div className="flex flex-col gap-8 mt-2 mb-8">{children}</div>
       </div>
       <Footer />
     </div>

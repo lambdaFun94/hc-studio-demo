@@ -8,7 +8,6 @@
  * template for every eligible entity in your Knowledge Graph.
  */
 
-import { AnswersHeadlessProvider } from "@yext/answers-headless-react";
 import {
   Data,
   Default,
@@ -20,7 +19,6 @@ import * as React from "react";
 import PageLayout from "../components/PageLayout";
 import DoctorVerticalSearch from "../components/search/verticals/DoctorVerticalSearch";
 import "../index.css";
-import searchConfig from "../search.config";
 import { defaultHeadConfig } from "../utilities";
 
 export const getPath: GetPath<Data> = (data) => {
@@ -40,12 +38,7 @@ const SearchResultsPage: Default<Data> = (data) => {
 
   return (
     <PageLayout title="All Doctors" fullWidth>
-      <AnswersHeadlessProvider
-        {...searchConfig}
-        verticalKey="healthcare_professionals"
-      >
-        <DoctorVerticalSearch />
-      </AnswersHeadlessProvider>
+      <DoctorVerticalSearch />
     </PageLayout>
   );
 };

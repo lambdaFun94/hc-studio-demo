@@ -1,9 +1,8 @@
-import { useAnswersActions } from "@yext/answers-headless-react";
-import { SearchBar, UniversalResults } from "@yext/answers-react-components";
-import cx from "classnames";
+import { UniversalResults } from "@yext/answers-react-components";
 import * as React from "react";
-import { useLoadStateFromURL } from "../../hooks";
 import DoctorCard from "./cards/DoctorCard";
+import SearchBar from "./SearchBar";
+import SearchExperience from "./SearchExperience";
 
 type Props = {
   //Insert Props Here
@@ -11,22 +10,9 @@ type Props = {
 };
 
 const UniversalSearchResults = ({ className }: Props) => {
-  const searchActions = useAnswersActions();
-
-  // Load Search Params
-  const { setQueryParam } = useLoadStateFromURL();
-
   return (
-    <div className={cx(className)}>
-      <SearchBar
-        onSearch={({ query }) => {
-          setQueryParam("query", query ?? "");
-          if (query) {
-            searchActions.setQuery(query);
-            searchActions.executeUniversalQuery();
-          }
-        }}
-      />
+    <SearchExperience>
+      <SearchBar />
       <UniversalResults
         verticalConfigMap={{
           healthcare_professionals: {
@@ -35,7 +21,7 @@ const UniversalSearchResults = ({ className }: Props) => {
           },
         }}
       />
-    </div>
+    </SearchExperience>
   );
 };
 
