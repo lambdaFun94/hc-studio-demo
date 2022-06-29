@@ -7,20 +7,29 @@ type Props = {
   //Insert Props Here
   verticalKey?: string;
   children?: React.ReactNode;
+  headlessId?: string;
+};
+
+const SearchExperience = ({
+  verticalKey,
+  children,
+  headlessId,
+}: Props) => {
+  return (
+    <AnswersHeadlessProvider
+      {...searchConfig}
+      verticalKey={verticalKey}
+      headlessId={headlessId}
+    >
+      <StateManager>{children}</StateManager>
+    </AnswersHeadlessProvider>
+  );
 };
 
 const StateManager = ({ children }: { children: React.ReactNode }) => {
   useLoadStateFromURL();
 
   return <>{children}</>;
-};
-
-const SearchExperience = ({ verticalKey, children }: Props) => {
-  return (
-    <AnswersHeadlessProvider {...searchConfig} verticalKey={verticalKey}>
-      <StateManager>{children}</StateManager>
-    </AnswersHeadlessProvider>
-  );
 };
 
 export default SearchExperience;

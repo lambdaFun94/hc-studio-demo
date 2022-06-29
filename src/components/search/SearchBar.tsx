@@ -1,4 +1,7 @@
-import { useAnswersActions } from "@yext/answers-headless-react";
+import {
+  useAnswersActions,
+  useAnswersState,
+} from "@yext/answers-headless-react";
 import {
   SearchBar as SB,
   SearchBarProps,
@@ -8,6 +11,7 @@ import { removeQueryParam, setQueryParam } from "../../utilities";
 
 const SearchBar = (props: SearchBarProps) => {
   const searchActions = useAnswersActions();
+  const verticalKey = useAnswersState((s) => s.vertical.verticalKey);
 
   return (
     <SB
@@ -19,9 +23,14 @@ const SearchBar = (props: SearchBarProps) => {
           removeQueryParam("query");
         }
 
-        if (query) {
-          searchActions.setQuery(query);
-          searchActions.executeUniversalQuery();
+        if (verticalKey) {
+          searchActions.setQuery(query ?? "");
+          searchActions.executeVerticalQuery();
+        } else {
+          if (query) {
+            searchActions.setQuery(query);
+            searchActions.executeUniversalQuery();
+          }
         }
       }}
     />

@@ -18,7 +18,7 @@ const Header = () => {
           <div className="px-4">Services</div>
         </div>
         <div className="flex justify-end items-center">
-          <AnswersHeadlessProvider {...searchConfig}>
+          <AnswersHeadlessProvider {...searchConfig} headlessId="header">
             <SearchBar
               placeholder="Search for anything..."
               customCssClasses={{
