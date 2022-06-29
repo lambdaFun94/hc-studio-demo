@@ -1,5 +1,6 @@
 import {
   AppliedFilters,
+  CardComponent,
   ResultsCount,
   StandardFacets,
   VerticalResults,
@@ -33,7 +34,7 @@ const DoctorVerticalSearch = ({ className }: Props) => {
             <ResultsCount />
             <AppliedFilters />
           </div>
-          <VerticalResults CardComponent={DoctorCard} />
+          <VerticalResults CardComponent={DoctorCard as CardComponent} />
         </div>
       </div>
     </SearchExperience>

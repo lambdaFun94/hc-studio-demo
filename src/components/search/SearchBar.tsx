@@ -16,6 +16,7 @@ const SearchBar = (props: SearchBarProps) => {
   return (
     <SB
       {...props}
+      hideVerticalLinks={true}
       onSearch={({ query }) => {
         if (query) {
           setQueryParam("query", query ?? "");
