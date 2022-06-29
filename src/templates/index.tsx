@@ -12,7 +12,7 @@ import "../index.css";
 import { defaultHeadConfig } from "../utilities";
 
 export const getPath: GetPath<Data> = (data) => {
-  return `index`;
+  return `index.html`;
 };
 
 export const getHeadConfig: GetHeadConfig<Data> = (data): HeadConfig => {
