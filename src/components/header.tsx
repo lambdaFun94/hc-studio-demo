@@ -1,57 +1,25 @@
-type Link = {
-  label: string;
-  uRL: string;
-};
+import * as React from "react";
 
-type Image = {
-  url: string;
-};
-
-type Logo = {
-  height?: number;
-  width?: number;
-  image: Image;
-};
-
-type Header = {
-  name: string;
-  header: Array<Link>;
-  primaryColor: string;
-  secondaryColor: string;
-  font: string;
-  googleAnalytics: Array<Link>;
-  logo: Logo;
-};
-
-const Header = (props: Header) => {
-  const {
-    name,
-    header,
-    primaryColor,
-    secondaryColor,
-    font,
-    googleAnalytics,
-    logo,
-  } = props;
-  const headerLinks = header.map((link) => (
-    <div>
-      <a key="uRL" href={link.uRL} className="hover:underline">
-        {link.label}
-      </a>
-    </div>
-  ));
+const Header = () => {
   return (
-    <>
-      <div className="centered-container">
-        <nav className="py-6 flex items-center justify-between">
-          <img src={logo.image.url} width="120" height="120"></img>
-          <div className="text-2xl font-semibold">{name}</div>
-          <div className="flex gap-x-10 text-lg font-semibold">
-            {headerLinks}
-          </div>
-        </nav>
+    <div className="bg-gray-100 border-b">
+      <div className="grid grid-cols-3 max-w-screen-lg px-4 mx-auto py-4">
+        <a href="/" className="flex justify-start items-center">
+          <div className="">Logo</div>
+        </a>
+        <div className="flex items-center justify-center gap-8 text-lg font-medium text-gray-700">
+          <div>Doctors</div>
+          <div>Locations</div>
+          <div>Services</div>
+        </div>
+        <div className="flex justify-end items-center">
+          <input
+            className="border rounded-md px-2 py-1"
+            placeholder="Search..."
+          />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

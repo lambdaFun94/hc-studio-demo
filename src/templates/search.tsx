@@ -27,8 +27,8 @@ export const getPath: GetPath<Data> = (data) => {
 
 export const getHeadConfig: GetHeadConfig<Data> = (data): HeadConfig => {
   return {
-    title: "Search Results",
     ...defaultHeadConfig,
+    title: "Search Results",
   };
 };
 

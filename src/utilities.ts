@@ -6,6 +6,7 @@ export const sortProps = (obj: any, keys: string[]) => {
 };
 
 export const defaultHeadConfig = {
+  title: "Healthcare Demo",
   charset: "UTF-8",
   viewport: "width=device-width, initial-scale=1",
 };

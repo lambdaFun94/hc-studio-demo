@@ -53,8 +53,8 @@ export const getHeadConfig: GetHeadConfig<Data> = ({
 }): HeadConfig => {
   const visitReason = document.streamOutput as Taxonomy_ReasonForVisit;
   return {
-    title: visitReason.name,
     ...defaultHeadConfig,
+    title: visitReason.name,
   };
 };
 
