@@ -22,6 +22,9 @@ const Header = () => {
               customCssClasses={{
                 container: "mb-0",
               }}
+              onSearch={({ query, verticalKey }) => {
+                window.location.href = `/search?query=${query}`;
+              }}
             />
           </AnswersHeadlessProvider>
         </div>
