@@ -38,7 +38,7 @@ const PageLayout = ({
               image={image}
               width={200}
               layout="fixed"
-              className="rounded-md drop-shadow-md"
+              className="rounded-md drop-shadow-md mb-4"
             />
           )}
           <div>

@@ -40,6 +40,7 @@
     "pokenode-ts": "^1.13.1",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.0.23",
+    "vite-imagetools": "^4.0.4"
   }
 }

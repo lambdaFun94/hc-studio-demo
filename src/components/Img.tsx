@@ -80,8 +80,6 @@ const Img = ({
     ? (width * imgHeight) / imgWidth
     : null;
 
-  console.log(width, height, imgWidth, imgHeight, fixedWidth, fixedHeight);
-
   if (layout == "constrained") {
     // Don't let image be wider then it's intrinsic width
     style.maxWidth = imgWidth;
