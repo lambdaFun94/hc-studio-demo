@@ -1,4 +1,7 @@
+import { AnswersHeadlessProvider } from "@yext/answers-headless-react";
+import { SearchBar } from "@yext/answers-react-components";
 import * as React from "react";
+import searchConfig from "../search.config";
 
 const Header = () => {
   return (
@@ -13,10 +16,14 @@ const Header = () => {
           <div>Services</div>
         </div>
         <div className="flex justify-end items-center">
-          <input
-            className="border rounded-md px-2 py-1"
-            placeholder="Search..."
-          />
+          <AnswersHeadlessProvider {...searchConfig}>
+            <SearchBar
+              placeholder="Search for anything..."
+              customCssClasses={{
+                container: "mb-0",
+              }}
+            />
+          </AnswersHeadlessProvider>
         </div>
       </div>
     </div>

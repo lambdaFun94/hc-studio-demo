@@ -1,3 +1,4 @@
+import { AnswersHeadlessProvider } from "@yext/answers-headless-react";
 import {
   Data,
   Default,
@@ -9,6 +10,7 @@ import * as React from "react";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
 import "../index.css";
+import searchConfig from "../search.config";
 import { defaultHeadConfig } from "../utilities";
 
 export const getPath: GetPath<Data> = (data) => {
@@ -24,20 +26,25 @@ export const getHeadConfig: GetHeadConfig<Data> = (data): HeadConfig => {
 const Index: Default<Data> = (data) => {
   return (
     <PageLayout title="Healthcare Demo Site">
-      <div className="bg-gray-200 rounded-lg py-4 px-8 lg:py-12 flex flex-col items-center">
-        <h2 className="text-2xl font-medium">Find a Provider</h2>
-        <div className="flex gap-4 my-4">
-          <input
-            placeholder="Search for specialty"
-            className="border px-2 py-1 rounded-md"
-          />
-          <input
-            placeholder="Search for location"
-            className="border px-2 py-1 rounded-md"
-          />
-          <button>Search</button>
+      <AnswersHeadlessProvider
+        {...searchConfig}
+        verticalKey="healthcare_professionals"
+      >
+        <div className="bg-gray-200 rounded-lg py-4 px-8 lg:py-12 flex flex-col items-center">
+          <h2 className="text-2xl font-medium">Find a Provider</h2>
+          <div className="flex gap-4 my-4">
+            <input
+              placeholder="Search for specialty"
+              className="border px-2 py-1 rounded-md"
+            />
+            <input
+              placeholder="Search for location"
+              className="border px-2 py-1 rounded-md"
+            />
+            <button>Search</button>
+          </div>
         </div>
-      </div>
+      </AnswersHeadlessProvider>
       <GridSection
         title="Feature Specialties"
         items={[
