@@ -17,7 +17,8 @@ const SearchBar = (props: SearchBarProps) => {
     <SB
       {...props}
       hideVerticalLinks={true}
-      onSearch={({ query }) => {
+      onSearch={(input) => {
+        const { query } = input;
         if (query) {
           setQueryParam("query", query ?? "");
         } else {
@@ -33,6 +34,8 @@ const SearchBar = (props: SearchBarProps) => {
             searchActions.executeUniversalQuery();
           }
         }
+
+        props.onSearch?.(input);
       }}
     />
   );

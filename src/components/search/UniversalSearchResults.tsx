@@ -19,7 +19,11 @@ const defaultVerticalConfig = {
 const UniversalSearchResults = ({ className }: Props) => {
   return (
     <SearchExperience>
-      <SearchBar />
+      <SearchBar
+        onSearch={({ query }) => {
+          document.title = `Search | ${query}`;
+        }}
+      />
       <UniversalResults
         verticalConfigMap={{
           healthcare_professionals: {
