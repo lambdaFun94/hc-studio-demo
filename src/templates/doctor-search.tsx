@@ -18,13 +18,13 @@ import {
 } from "@yext/yext-sites-scripts";
 import * as React from "react";
 import PageLayout from "../components/PageLayout";
-import UniversalSearchResults from "../components/search/UniversalSearchResults";
+import DoctorVerticalSearch from "../components/search/verticals/DoctorVerticalSearch";
 import "../index.css";
 import searchConfig from "../search.config";
 import { defaultHeadConfig } from "../utilities";
 
 export const getPath: GetPath<Data> = (data) => {
-  return `search`;
+  return `doctors`;
 };
 
 export const getHeadConfig: GetHeadConfig<Data> = (data): HeadConfig => {
@@ -39,9 +39,12 @@ const SearchResultsPage: Default<Data> = (data) => {
   const { streamOutput } = document;
 
   return (
-    <PageLayout title="Search Results">
-      <AnswersHeadlessProvider {...searchConfig}>
-        <UniversalSearchResults />
+    <PageLayout title="All Doctors" fullWidth>
+      <AnswersHeadlessProvider
+        {...searchConfig}
+        verticalKey="healthcare_professionals"
+      >
+        <DoctorVerticalSearch />
       </AnswersHeadlessProvider>
     </PageLayout>
   );

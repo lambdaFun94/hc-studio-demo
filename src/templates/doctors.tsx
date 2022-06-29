@@ -75,6 +75,7 @@ const DoctorPage: Default<Data> = ({ document }) => {
       title={doctor.name}
       subtitle={`NPI: ${doctor.npi}`}
       image={doctor.headshot}
+      breadcrumbs={[{ label: "All Doctors", href: "/doctors" }]}
     >
       <GridSection title="Specialties" items={doctor.c_specialty} />
     </PageLayout>
