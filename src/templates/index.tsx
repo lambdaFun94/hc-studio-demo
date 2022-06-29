@@ -1,4 +1,5 @@
 import { AnswersHeadlessProvider } from "@yext/answers-headless-react";
+import { FilterSearch } from "@yext/answers-react-components";
 import {
   Data,
   Default,
@@ -32,16 +33,32 @@ const Index: Default<Data> = (data) => {
       >
         <div className="bg-gray-200 rounded-lg py-4 px-8 lg:py-12 flex flex-col items-center">
           <h2 className="text-2xl font-medium">Find a Provider</h2>
-          <div className="flex gap-4 my-4">
-            <input
-              placeholder="Search for specialty"
-              className="border px-2 py-1 rounded-md"
-            />
-            <input
-              placeholder="Search for location"
-              className="border px-2 py-1 rounded-md"
-            />
-            <button>Search</button>
+          <div className="flex gap-4 my-4 w-full mx-8">
+            <div className="w-full">
+              <FilterSearch
+                label="Search for specialty, procedure or provider name"
+                placeholder="e.g. Cardiology or Jim Shaw"
+                searchFields={[
+                  {
+                    entityType: "healthcareProfessional",
+                    fieldApiName: "builtin.location",
+                  },
+                ]}
+              />
+            </div>
+            <div className="w-full">
+              <FilterSearch
+                label="Location"
+                placeholder="e.g. New York, NY or 10032"
+                searchFields={[
+                  {
+                    entityType: "healthcareProfessional",
+                    fieldApiName: "builtin.location",
+                  },
+                ]}
+              />
+            </div>
+            {/* <SearchButton disabled={!canSearch} className="mt-auto w-36" /> */}
           </div>
         </div>
       </AnswersHeadlessProvider>
