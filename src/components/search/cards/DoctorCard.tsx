@@ -12,7 +12,7 @@ const DoctorCard = ({ result }: CardProps) => {
   return (
     <div className="border rounded-md p-4 mb-4 flex gap-4">
       {headshot && (
-        <div className="w-24 lg:w-48">
+        <div className="w-12 lg:w-48">
           <Img
             image={headshot}
             className="rounded-md drop-shadow-md"

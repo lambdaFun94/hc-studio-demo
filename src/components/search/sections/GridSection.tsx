@@ -14,9 +14,9 @@ const GridSection = ({
   return (
     <div>
       <div>{header}</div>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 grid-cols-1">
         {results.map((r) => (
-          <CardComponent result={r} vertical={true} />
+          <CardComponent result={r} />
         ))}
       </div>
     </div>

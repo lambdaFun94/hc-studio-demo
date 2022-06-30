@@ -33,7 +33,7 @@ const Index: Default<Data> = (data) => {
       >
         <div className="bg-gray-200 rounded-lg py-4 px-8 lg:py-12 flex flex-col items-center">
           <h2 className="text-2xl font-medium">Find a Provider</h2>
-          <div className="flex gap-4 my-4 w-full mx-8">
+          <div className="flex flex-col md:flex-row gap-4 my-4 w-full mx-8">
             <div className="w-full">
               <FilterSearch
                 label="Search for specialty, procedure or provider name"
