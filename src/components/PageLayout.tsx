@@ -7,11 +7,13 @@ import Header from "./Header";
 import Img, { Image } from "./Img";
 
 type Props = {
-  title: string;
+  title?: string;
   subtitle?: string;
   children?: React.ReactNode;
   image?: Image;
   fullWidth?: boolean;
+  noPadding?: boolean;
+  hideTitle?: boolean;
   breadcrumbs?: BreadcrumbItem[];
 };
 
@@ -22,17 +24,22 @@ const PageLayout = ({
   image,
   fullWidth,
   breadcrumbs,
+  noPadding,
+  hideTitle,
 }: Props) => {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <div
-        className={cx("py-2 px-4 mx-auto flex-grow w-full", {
+        className={cx(" mx-auto flex-grow w-full", {
           "max-w-screen-lg": !fullWidth,
+          "py-2 px-4": !noPadding,
         })}
       >
-        {breadcrumbs && <BreadCrumbs items={breadcrumbs} pageTitle={title} />}
-        <div className="flex gap-4 mt-4">
+        {breadcrumbs && title && (
+          <BreadCrumbs items={breadcrumbs} pageTitle={title} />
+        )}
+        <div className="flex gap-4">
           {image && (
             <Img
               image={image}
@@ -42,11 +49,19 @@ const PageLayout = ({
             />
           )}
           <div>
-            <div className="text-4xl font-medium mb-4">{title}</div>
+            {!hideTitle && (
+              <div className="text-4xl font-medium mb-4">{title}</div>
+            )}
             {subtitle && <div className="text-gray-700 mb-4">{subtitle}</div>}
           </div>
         </div>
-        <div className="flex flex-col gap-8 mt-2 mb-8">{children}</div>
+        <div
+          className={cx("flex flex-col gap-8 ", {
+            "mt-2 mb-8": !noPadding,
+          })}
+        >
+          {children}
+        </div>
       </div>
       <Footer />
     </div>

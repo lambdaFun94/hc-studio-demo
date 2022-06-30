@@ -24,7 +24,9 @@ const Header = () => {
             <a href="/doctors" className="px-4">
               Doctors
             </a>
-            <div className="px-4">Locations</div>
+            <a href="/locations" className="px-4">
+              Locations
+            </a>
             <div className="px-4">Services</div>
           </div>
           <div className="flex justify-end items-center">
