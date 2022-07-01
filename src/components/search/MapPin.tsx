@@ -16,19 +16,16 @@ const MapPin: React.FC<any> = ({ result }) => {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className="absolute z-50 bottom-12 -inset-x-48 w-96 h-36 bg-white rounded-md shadow-sm shadow-stone-400/5 p-4 gap-5 align-middle">
-          <div className="my-auto mx-auto flex flex-row">
-            <div className="ml-2 mr-4 my-auto w-24 h-24 grid"></div>
-            <div className="my-auto">
-              <h3 className="text-lg font-normal font-serif">{name}</h3>
-              <div className="text-stone-500 font-sans">
-                <p className="text-xs">
-                  {address?.line1}, {address?.line2}
-                </p>
-                <p className="text-xs">
-                  {address?.city}, {address?.region}, {address?.postalCode}
-                </p>
-              </div>
+        <div className="absolute z-50 bottom-12 -inset-x-24  bg-white rounded-md shadow-sm shadow-stone-400/5 p-4 gap-5 align-middle">
+          <div className="">
+            <h3 className="text-lg font-normal ">{name}</h3>
+            <div className="text-stone-500 font-sans">
+              <p className="text-xs">
+                {address?.line1}, {address?.line2}
+              </p>
+              <p className="text-xs">
+                {address?.city}, {address?.region}, {address?.postalCode}
+              </p>
             </div>
           </div>
         </div>

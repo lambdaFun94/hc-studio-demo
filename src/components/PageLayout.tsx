@@ -50,7 +50,7 @@ const PageLayout = ({
           )}
           <div>
             {!hideTitle && (
-              <div className="text-4xl font-medium mb-4">{title}</div>
+              <div className="text-4xl font-medium mb-4 mt-4">{title}</div>
             )}
             {subtitle && <div className="text-gray-700 mb-4">{subtitle}</div>}
           </div>
