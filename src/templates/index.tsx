@@ -27,7 +27,7 @@ const Index: Default<Data> = (data) => {
   //   __site: { c_featuredSpecialties, c_featuredProcedures },
   // } = data.document as any as { __site: Site };
   return (
-    <PageLayout title="Healthcare Demo Site">
+    <PageLayout title="Healthcare Demo">
       <DoctorFinderSearchBar />
       {/* <GridSection title="Feature Specialties" items={c_featuredSpecialties} /> */}
       {/* <GridSection title="Feature Procedures" items={c_featuredProcedures} /> */}

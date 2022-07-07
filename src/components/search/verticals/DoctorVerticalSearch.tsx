@@ -7,6 +7,7 @@ import {
 } from "@yext/answers-react-components";
 import * as React from "react";
 import DoctorCard from "../cards/DoctorCard";
+import NoResults from "../NoResults";
 import SearchBar from "../SearchBar";
 import SearchExperience from "../SearchExperience";
 
@@ -35,7 +36,11 @@ const DoctorVerticalSearch = ({ className }: Props) => {
             <ResultsCount />
             <AppliedFilters />
           </div>
-          <VerticalResults CardComponent={DoctorCard as CardComponent} />
+          <VerticalResults
+            displayAllOnNoResults={false}
+            CardComponent={DoctorCard as CardComponent}
+          />
+          <NoResults />
         </div>
       </div>
     </SearchExperience>
