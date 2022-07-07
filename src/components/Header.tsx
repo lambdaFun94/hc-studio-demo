@@ -27,7 +27,9 @@ const Header = () => {
             <a href="/locations" className="px-4">
               Locations
             </a>
-            <div className="px-4">Services</div>
+            <a href="/specialties" className="px-4">
+              Specialties
+            </a>
           </div>
           <div className="flex justify-end items-center">
             <AnswersHeadlessProvider {...searchConfig} headlessId="header">
@@ -36,6 +38,7 @@ const Header = () => {
                 customCssClasses={{
                   container: "mb-0",
                 }}
+                hideVerticalLinks
                 onSearch={({ query, verticalKey }) => {
                   window.location.href = `/search?query=${query}`;
                 }}

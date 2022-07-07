@@ -43,8 +43,14 @@ export interface BoundingArea {
 }
 
 export const calculateBoundingArea = (results: any[]): BoundingArea => {
-  const lats = results.map((r) => r.rawData.geocodedCoordinate.latitude);
-  const lngs = results.map((r) => r.rawData.geocodedCoordinate.longitude);
+  const coords = results
+    .map((r) => {
+      return r.rawData.geocodedCoordinate;
+    })
+    .filter((c) => c);
+
+  const lats = coords.map((c) => c.latitude);
+  const lngs = coords.map((c) => c.longitude);
   const west = Math.min(...lats);
   const east = Math.max(...lats);
   const south = Math.min(...lngs);

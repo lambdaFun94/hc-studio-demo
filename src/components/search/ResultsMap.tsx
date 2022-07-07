@@ -48,17 +48,19 @@ const ResultsMap: React.FC = () => {
   useEffect(() => {
     if (results && map.current !== undefined && map !== undefined) {
       results?.forEach((r: any, i) => {
-        const { latitude, longitude } = r.rawData.geocodedCoordinate;
-        const coord = { lat: latitude, lon: longitude };
-        const el = document.createElement("div");
+        const { latitude, longitude } = r.rawData.geocodedCoordinate ?? {};
+        if (latitude && longitude) {
+          const coord = { lat: latitude, lon: longitude };
+          const el = document.createElement("div");
 
-        ReactDOM.render(<MapPin result={r} />, el);
-        el.className = "marker";
+          ReactDOM.render(<MapPin result={r} />, el);
+          el.className = "marker";
 
-        new mapboxgl.Marker(el)
-          .setLngLat(coord)
-          // @ts-ignore: Object is possibly 'null'.
-          .addTo(map.current);
+          new mapboxgl.Marker(el)
+            .setLngLat(coord)
+            // @ts-ignore: Object is possibly 'null'.
+            .addTo(map.current);
+        }
       });
       const boundingArea = calculateBoundingArea(results);
       // @ts-ignore: Object is possibly 'null'.

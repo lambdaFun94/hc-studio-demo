@@ -23,7 +23,8 @@ const DoctorVerticalSearch = ({ className }: Props) => {
           <SearchBar />
           <StandardFacets
             searchable={true}
-            defaultExpanded={false}
+            collapsible={false}
+            defaultExpanded={true}
             customCssClasses={{
               container: "w-full",
             }}

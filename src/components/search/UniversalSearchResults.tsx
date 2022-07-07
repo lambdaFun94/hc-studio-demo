@@ -54,6 +54,8 @@ const UniversalSearchResults = ({ className }: Props) => {
           specialties: {
             ...defaultVerticalConfig,
             label: "Specialties",
+            viewAllButton: true,
+            getViewAllUrl: ({ query }) => `/specialties?query=${query}`,
           },
           subspecialties: {
             ...defaultVerticalConfig,

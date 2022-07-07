@@ -13,7 +13,12 @@ export const useLoadStateFromURL = () => {
       new URLSearchParams(window.location.search)
     );
 
-    const { query } = params;
+    const { query, filters } = params;
+
+    if (filters && filters.length > 0) {
+      searchActions.setStaticFilters(JSON.parse(filters));
+    }
+
     if (query) {
       searchActions.setQuery(query);
 

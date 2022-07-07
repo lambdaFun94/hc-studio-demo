@@ -80,3 +80,8 @@ export type HealthcareProfessional = {
 export type HealthcareProfessionalCustomFields = {
   c_specialty?: Taxonomy_Specialty[];
 };
+
+export type Site = {
+  c_featuredSpecialties: Taxonomy_Specialty[];
+  c_featuredProcedures: Taxonomy_Procedure[];
+};

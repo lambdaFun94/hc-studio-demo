@@ -3,9 +3,16 @@ import {
   renderHighlightedValue,
 } from "@yext/answers-react-components";
 import * as React from "react";
+import {
+  HealthcareProfessional,
+  HealthcareProfessionalCustomFields,
+} from "../../../types/kg";
+import Button from "../../Button";
 import Img, { Image } from "../../Img";
 
 const DoctorCard = ({ result }: CardProps) => {
+  const data = result.rawData as HealthcareProfessional &
+    HealthcareProfessionalCustomFields;
   const title = (result.highlightedFields?.name ?? result.name) as string;
   const npi = result.rawData.npi as string;
   const headshot = result.rawData.headshot as Image;
@@ -23,9 +30,17 @@ const DoctorCard = ({ result }: CardProps) => {
       )}
       <div>
         {title && <div>{renderHighlightedValue(title)}</div>}
+        {data.c_specialty && (
+          <div>{data.c_specialty?.map((s) => s.name).join(", ")}</div>
+        )}
         {npi && <div className="text-gray-500 text-sm">NPI: {npi}</div>}
         {/* <pre>{JSON.stringify(result.rawData, null, 2)}</pre> */}
-        <a href={result.rawData.slug as string}>View Details</a>
+
+        <div className="flex gap-2 mt-4">
+          <Button>Book Appointment</Button>
+          <Button>Get Directions</Button>
+          <Button>Call Now</Button>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,20 @@
+{
+  "$id": "site-entity",
+  "filter": {
+    "entityIds": ["site"]
+  },
+  "source": "knowledgeGraph",
+  "fields": [
+    "name",
+    "c_featuredSpecialties.id",
+    "c_featuredSpecialties.name",
+    "c_featuredSpecialties.slug",
+    "c_featuredProcedures.id",
+    "c_featuredProcedures.name",
+    "c_featuredProcedures.slug"
+  ],
+  "localization": {
+    "locales": ["en"],
+    "primary": false
+  }
+}
