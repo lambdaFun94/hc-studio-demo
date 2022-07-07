@@ -22,7 +22,7 @@ const DoctorFinderSearchBar = ({ className }: Props) => {
     <div className={cx(className)}>
       <div className="bg-gray-200 rounded-lg py-4 px-8 lg:py-6 flex flex-col items-center">
         <h2 className="text-2xl font-medium mt-4">Find a Provider</h2>
-        <div className="flex items-end  flex-col md:flex-row gap-4 my-4 w-full mx-8">
+        <div className="flex md:items-end flex-col md:flex-row gap-4 my-4 w-full mx-8">
           <div className="flex-grow">
             <FilterSearch
               label="Search for specialty, procedure or provider name"
