@@ -6,6 +6,12 @@ import {
   HeadConfig,
 } from "@yext/yext-sites-scripts";
 import * as React from "react";
+import {
+  FaCalendar,
+  FaHandHoldingMedical,
+  FaHeartbeat,
+  FaMoneyBill,
+} from "react-icons/fa";
 import PageLayout from "../components/PageLayout";
 import DoctorFinderSearchBar from "../components/search/DoctorFinderSearchBar";
 //@ts-ignore
@@ -23,6 +29,28 @@ export const getHeadConfig: GetHeadConfig<Data> = (data): HeadConfig => {
   };
 };
 
+const keyActions: {
+  label: string;
+  icon: React.ReactNode;
+}[] = [
+  {
+    label: "Get Care Now",
+    icon: <FaHeartbeat />,
+  },
+  {
+    label: "Schedule an Appointment",
+    icon: <FaCalendar />,
+  },
+  {
+    label: "Pay a Bill",
+    icon: <FaMoneyBill />,
+  },
+  {
+    label: "Make a Referral",
+    icon: <FaHandHoldingMedical />,
+  },
+];
+
 const Index: Default<Data> = (data) => {
   console.log(data);
   // const {
@@ -33,6 +61,21 @@ const Index: Default<Data> = (data) => {
       <img src={officeImage} className="rounded-xl" />
       <div className="lg:-mt-36 lg:mx-24 bg-gray-100 shadow-lg rounded-lg bg-opacity-90">
         <DoctorFinderSearchBar />
+      </div>
+      <div className="grid md:grid-cols-4 gap-4">
+        {keyActions.map((a) => (
+          <div
+            key={a.label}
+            className="bg-gray-100 flex items-center justify-center gap-4 flex-col py-10 hover:bg-green-700 group transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
+          >
+            <div className="text-4xl text-green-700 group-hover:text-white transition-colors">
+              {a.icon}
+            </div>
+            <div className="text-2xl font-bold text-center group-hover:text-white transition-colors">
+              {a.label}
+            </div>
+          </div>
+        ))}
       </div>
       {/* <GridSection title="Feature Specialties" items={c_featuredSpecialties} /> */}
       {/* <GridSection title="Feature Procedures" items={c_featuredProcedures} /> */}
