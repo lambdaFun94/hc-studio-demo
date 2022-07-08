@@ -16,7 +16,7 @@ const Header = () => {
       </div>
       <div className="bg-green-700  border-b hidden lg:flex">
         <div className="w-full flex justify-between items-center max-w-screen-lg px-4 mx-auto py-2">
-          <div className=" flex items-center justify-center text-lg font-medium text-gray-700 text-white">
+          <div className=" flex items-center justify-center text-lg font-medium  text-white">
             <a
               href="/"
               className="flex justify-start items-center mr-4 text-white/80 text-4xl"
