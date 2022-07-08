@@ -19,7 +19,7 @@ const Button = ({
   return (
     <div className={cx(className)}>
       <button
-        className="bg-green-700 text-white rounded-sm flex items-center justify-center gap-2 px-4 py-2 mb-2 hover:bg-green-800"
+        className="bg-green-700 text-white rounded-lg flex items-center justify-center gap-2 px-4 py-2 mb-2 hover:bg-green-800"
         {...otherProps}
       >
         {children}

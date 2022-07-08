@@ -8,6 +8,8 @@ import {
 import * as React from "react";
 import PageLayout from "../components/PageLayout";
 import DoctorFinderSearchBar from "../components/search/DoctorFinderSearchBar";
+//@ts-ignore
+import officeImage from "../images/homepage-background.jpg?w=1200&h=600";
 import "../index.css";
 import { defaultHeadConfig } from "../utilities";
 
@@ -27,8 +29,11 @@ const Index: Default<Data> = (data) => {
   //   __site: { c_featuredSpecialties, c_featuredProcedures },
   // } = data.document as any as { __site: Site };
   return (
-    <PageLayout title="Healthcare Demo">
-      <DoctorFinderSearchBar />
+    <PageLayout>
+      <img src={officeImage} className="rounded-xl" />
+      <div className="lg:-mt-36 lg:mx-24 bg-gray-100 shadow-lg rounded-lg bg-opacity-90">
+        <DoctorFinderSearchBar />
+      </div>
       {/* <GridSection title="Feature Specialties" items={c_featuredSpecialties} /> */}
       {/* <GridSection title="Feature Procedures" items={c_featuredProcedures} /> */}
     </PageLayout>
