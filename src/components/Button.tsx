@@ -5,11 +5,17 @@ type Props = {
   //Insert Props Here
   className?: string;
   children?: React.ReactNode;
+  icon?: React.ReactNode;
+  block?: boolean;
+  secondary?: boolean;
 };
 
 const Button = ({
   className,
   children,
+  icon,
+  block,
+  secondary,
   ...otherProps
 }: Props &
   React.DetailedHTMLProps<
@@ -17,14 +23,22 @@ const Button = ({
     HTMLButtonElement
   >) => {
   return (
-    <div className={cx(className)}>
-      <button
-        className="bg-green-700 text-white rounded-lg flex items-center justify-center gap-2 px-4 py-2 mb-2 hover:bg-green-800"
-        {...otherProps}
-      >
-        {children}
-      </button>
-    </div>
+    <button
+      className={cx(
+        " rounded-lg flex items-center justify-left gap-2 px-4 py-2  whitespace-nowrap transition-all",
+        {
+          "w-full": block,
+          "border border-green-900 text-green-900 bg-white hover:bg-gray-200":
+            secondary,
+          "bg-green-700 text-white hover:bg-green-800": !secondary,
+        },
+        className
+      )}
+      {...otherProps}
+    >
+      {icon && <div className="opacity-50">{icon}</div>}
+      {children}
+    </button>
   );
 };
 
