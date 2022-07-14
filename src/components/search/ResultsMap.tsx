@@ -69,7 +69,10 @@ const ResultsMap: React.FC = () => {
   }, [results]);
 
   return (
-    <div ref={mapContainer} className="absolute inset-0 bg-blue-200 h-screen" />
+    <div
+      ref={mapContainer}
+      className="absolute inset-0 bg-orange-200 h-screen"
+    />
   );
 };
 

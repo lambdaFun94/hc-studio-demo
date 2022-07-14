@@ -58,7 +58,7 @@ const LocationResults = () => {
               const location = r.rawData as any;
               const { address, mainPhone } = location;
               return (
-                <div className="p-4 border-b hover:bg-blue-100" key={r.id}>
+                <div className="p-4 border-b hover:bg-orange-100" key={r.id}>
                   <div className="text-lg mb-1 font-medium">{r.name}</div>
                   <a className="mb-1 block" href={`tel:${mainPhone}`}>
                     {formatPhoneNumber(mainPhone)}
