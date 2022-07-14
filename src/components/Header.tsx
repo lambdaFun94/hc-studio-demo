@@ -10,7 +10,7 @@ import Button from "./Button";
 const Header = () => {
   return (
     <>
-      <div className="relative bg-green-700">
+      <div className="relative bg-blue-700">
         <div className="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
           <div className="pr-16 sm:text-center sm:px-16">
             <p className="font-medium text-white">
@@ -38,25 +38,25 @@ const Header = () => {
           <div className="flex items-center justify-center text-lg font-medium  text-white ">
             <a
               href="/"
-              className="flex justify-start items-center mr-4 text-green/80 text-4xl"
+              className="flex justify-start items-center mr-4 text-blue/80 text-4xl"
             >
               <FaHandHoldingMedical />
             </a>
             <a
               href="/doctors"
-              className="px-4 hover:bg-gray-300/50 rounded-full py-1 text-green-900 transition-all"
+              className="px-4 hover:bg-gray-300/50 rounded-full py-1 text-blue-900 transition-all"
             >
               Doctors
             </a>
             <a
               href="/locations"
-              className="px-4 hover:bg-gray-300/50 rounded-full py-1 text-green-900 transition-all"
+              className="px-4 hover:bg-gray-300/50 rounded-full py-1 text-blue-900 transition-all"
             >
               Locations
             </a>
             <a
               href="/specialties"
-              className="px-4 hover:bg-gray-300/50 rounded-full py-1 text-green-900 transition-all"
+              className="px-4 hover:bg-gray-300/50 rounded-full py-1 text-blue-900 transition-all"
             >
               Specialties
             </a>

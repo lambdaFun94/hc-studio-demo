@@ -66,9 +66,9 @@ const Index: Default<Data> = (data) => {
         {keyActions.map((a) => (
           <div
             key={a.label}
-            className="bg-gray-100 flex items-center justify-center gap-4 flex-col py-10 hover:bg-green-700 group transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
+            className="bg-gray-100 flex items-center justify-center gap-4 flex-col py-10 hover:bg-blue-700 group transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
           >
-            <div className="text-4xl text-green-700 group-hover:text-white transition-colors">
+            <div className="text-4xl text-blue-700 group-hover:text-white transition-colors">
               {a.icon}
             </div>
             <div className="text-2xl font-bold text-center group-hover:text-white transition-colors">
