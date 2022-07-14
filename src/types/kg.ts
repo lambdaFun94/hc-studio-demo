@@ -57,6 +57,7 @@ export type Taxonomy_Procedure = {
   id: string;
   name: string;
   slug: string;
+  description: string;
   c_relatedSpecialties2: (Taxonomy_Specialty | Taxonomy_Subspecialty)[];
 };
 

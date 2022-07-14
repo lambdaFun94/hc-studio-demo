@@ -29,6 +29,7 @@ export const config: TemplateConfig = {
       "uid",
       "slug",
       "taxonomy_synonyms",
+      "description",
       "c_relatedSpecialties2.id",
       "c_relatedSpecialties2.slug",
       "c_relatedSpecialties2.name",
@@ -79,7 +80,7 @@ const ProcedurePage: Default<Data> = ({ document }) => {
   const procedure = document.streamOutput as Taxonomy_Procedure;
 
   return (
-    <PageLayout title={procedure.name}>
+    <PageLayout title={procedure.name} subtitle={procedure.description}>
       <GridSection
         title="Related Specialties"
         items={procedure.c_relatedSpecialties2}
