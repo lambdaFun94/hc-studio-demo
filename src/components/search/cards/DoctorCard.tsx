@@ -39,9 +39,12 @@ const DoctorCard = ({ result }: CardProps) => {
         )}
         <div className="p-4">
           {title && (
-            <div className="text-2xl font-medium">
+            <a
+              className="text-2xl font-medium hover:underline"
+              href={result.rawData.slug as string}
+            >
               {renderHighlightedValue(title)}
-            </div>
+            </a>
           )}
           {data.c_specialty && (
             <div className="text-lg text-gray-700 mb-2">
