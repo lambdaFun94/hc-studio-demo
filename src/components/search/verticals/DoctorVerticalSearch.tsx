@@ -18,7 +18,7 @@ type Props = {
 
 const DoctorVerticalSearch = ({ className }: Props) => {
   return (
-    <SearchExperience verticalKey="healthcare_professionals">
+    <SearchExperience verticalKey="doctors">
       <div className="flex">
         <div className="border-r mr-4 pr-4 w-full max-w-md">
           <SearchBar />

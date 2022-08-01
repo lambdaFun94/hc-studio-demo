@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite build && yext pages generate-test-data && pages dev",
     "build": "vite build",
-    "build-and-generate": "vite build && yext pages generate-test-data && yext pages generate && yext pages serve",
+    "gen": "vite build && yext pages generate-test-data && yext pages generate && yext pages serve",
     "fmt": "prettier -w .",
     "lint": "eslint .",
     "clean": "rm -rf .artifact-output .yext/ dist/ localData sites-rendered-output"

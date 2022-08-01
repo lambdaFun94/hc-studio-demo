@@ -3,6 +3,7 @@ import {
   GetPath,
   HeadConfig,
   Template,
+  TemplateConfig,
   TemplateProps,
   TemplateRenderProps,
 } from "@yext/pages";
@@ -20,6 +21,29 @@ import DoctorFinderSearchBar from "../components/search/DoctorFinderSearchBar";
 import officeImage from "../images/homepage-background.jpg?w=1200&h=600";
 import "../index.css";
 import { defaultHeadConfig } from "../utilities";
+
+export const config: TemplateConfig = {
+  name: "homepage",
+  stream: {
+    $id: "homepage-stream",
+    filter: {
+      entityIds: ["9042039302025980266"],
+    },
+    fields: [
+      "name",
+      "c_featuredProcedures.id",
+      "c_featuredProcedures.name",
+      "c_featuredProcedures.slug",
+      "c_featuredSpecialties.id",
+      "c_featuredSpecialties.slug",
+      "c_featuredSpecialties.name",
+    ],
+    localization: {
+      locales: ["en"],
+      primary: false,
+    },
+  },
+};
 
 export const getPath: GetPath<TemplateProps> = (data) => {
   return `index.html`;
@@ -56,8 +80,7 @@ const keyActions: {
 ];
 
 const Index: Template<TemplateRenderProps> = ({ document }) => {
-  const { _site } = document;
-  const { c_featuredProcedures, c_featuredSpecialties } = _site;
+  const { c_featuredProcedures, c_featuredSpecialties } = document;
   // const {
   //   __site: { c_featuredSpecialties, c_featuredProcedures },
   // } = data.document as any as { __site: Site };

@@ -18,7 +18,7 @@ const BreadCrumbs = ({ className, items, pageTitle }: Props) => {
     <div className={cx(className, "my-4")}>
       <div className="flex">
         {items.map((i) => (
-          <div className="flex">
+          <div className="flex" key={i.label}>
             <a href={i.href} className="">
               {i.label}
             </a>
