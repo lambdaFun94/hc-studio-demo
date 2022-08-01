@@ -13,15 +13,19 @@ import Button from "../Button";
 type Props = {
   //Insert Props Here
   className?: string;
+  headline?: string;
 };
 
-const DoctorFinderSearchBar = ({ className }: Props) => {
+const DoctorFinderSearchBar = ({
+  className,
+  headline = "Find a Provider",
+}: Props) => {
   const filters = useAnswersState((s) => s.filters);
   const actions = useAnswersActions();
   return (
     <div className={cx(className)}>
       <div className=" py-4 px-8 lg:py-4 flex flex-col items-center">
-        <h2 className="text-3xl  mt-2  font-bold">Find a Provider</h2>
+        <h2 className="text-3xl  mt-2  font-bold">{headline}</h2>
         <div className="flex md:items-end flex-col md:flex-row gap-4 my-4 w-full mx-8">
           <div className="flex-grow">
             <FilterSearch
@@ -77,12 +81,12 @@ const DoctorFinderSearchBar = ({ className }: Props) => {
   );
 };
 
-export default () => (
+export default ({ headline }: { headline: string }) => (
   <AnswersHeadlessProvider
     headlessId="doctor-finder"
     {...searchConfig}
     verticalKey="healthcare_professionals"
   >
-    <DoctorFinderSearchBar />
+    <DoctorFinderSearchBar headline={headline} />
   </AnswersHeadlessProvider>
 );

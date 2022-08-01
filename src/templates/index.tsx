@@ -31,6 +31,7 @@ export const config: TemplateConfig = {
     },
     fields: [
       "name",
+      "c_headline",
       "c_featuredProcedures.id",
       "c_featuredProcedures.name",
       "c_featuredProcedures.slug",
@@ -80,7 +81,7 @@ const keyActions: {
 ];
 
 const Index: Template<TemplateRenderProps> = ({ document }) => {
-  const { c_featuredProcedures, c_featuredSpecialties } = document;
+  const { c_featuredProcedures, c_featuredSpecialties, c_headline } = document;
   // const {
   //   __site: { c_featuredSpecialties, c_featuredProcedures },
   // } = data.document as any as { __site: Site };
@@ -88,7 +89,7 @@ const Index: Template<TemplateRenderProps> = ({ document }) => {
     <PageLayout>
       <img src={officeImage} className="rounded-xl" />
       <div className="lg:-mt-36 lg:mx-24 bg-gray-100 shadow-lg rounded-lg bg-opacity-90">
-        <DoctorFinderSearchBar />
+        <DoctorFinderSearchBar headline={c_headline} />
       </div>
       <div className="grid md:grid-cols-4 gap-4">
         {keyActions.map((a) => (

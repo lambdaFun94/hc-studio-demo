@@ -9,13 +9,15 @@ import * as ReactDOM from "react-dom";
 import { calculateBoundingArea } from "../../utilities";
 import MapPin from "./MapPin";
 
+const mapboxAccessToken =
+  "pk.eyJ1IjoibWRhdmlzaCIsImEiOiJja3pkNzZ4cDYydmF6MnZtemZrNXJxYmtvIn0.9CYfaiw9PB90VlQEqt3dRQ";
+
+// if (!mapboxgl.accessToken) {
+//   //@ts-ignore
+//   mapboxgl.accessToken = mapboxAccessToken;
+// }
+
 const ResultsMap: React.FC = () => {
-  const mapboxAccessToken =
-    "pk.eyJ1IjoibWRhdmlzaCIsImEiOiJja3pkNzZ4cDYydmF6MnZtemZrNXJxYmtvIn0.9CYfaiw9PB90VlQEqt3dRQ";
-
-  //@ts-ignore
-  mapboxgl.accessToken = mapboxAccessToken;
-
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<Map | null>(null);
   const [lng, setLng] = useState(-70.9);
@@ -39,6 +41,7 @@ const ResultsMap: React.FC = () => {
         center: [boundingArea.centerLat, boundingArea.centerLng],
         zoom: 9,
         scrollZoom: false,
+        accessToken: mapboxAccessToken,
       });
 
       map.current.addControl(new mapboxgl.NavigationControl());
