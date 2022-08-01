@@ -80,6 +80,27 @@ export type HealthcareProfessional = {
 
 export type HealthcareProfessionalCustomFields = {
   c_specialty?: Taxonomy_Specialty[];
+  c_locationsPracticingAt?: HealthcareFacility[];
+};
+
+export type Coordinate = {
+  latitude: number;
+  longitude: number;
+};
+
+export type HealthcareFacility = {
+  id: string;
+  name: string;
+  npi: string;
+  address: Address;
+  mainPhone: any;
+  gender: any;
+  insuranceAccepted?: any;
+  admittingHospitals?: any;
+  slug: string;
+  headshot?: Image;
+  geocodedCoordinate?: Coordinate;
+  c_doctorsPracticingHere?: HealthcareProfessional[];
 };
 
 export type Site = {

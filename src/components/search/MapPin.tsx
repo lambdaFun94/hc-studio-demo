@@ -33,7 +33,7 @@ const MapPin: React.FC<any> = ({ result }) => {
       <svg
         onMouseEnter={() => setShowCard(true)}
         onMouseLeave={() => setShowCard(false)}
-        className="z-40 fill-orange-800 hover:fill-orange-500 stroke-2 stroke-white"
+        className="z-40 fill-blue-800 hover:fill-blue-500 stroke-2 stroke-white"
         width="33"
         height="42"
         viewBox="0 0 30 38"

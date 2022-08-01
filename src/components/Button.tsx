@@ -28,9 +28,9 @@ const Button = ({
         " rounded-lg flex items-center justify-left gap-2 px-4 py-2  whitespace-nowrap transition-all",
         {
           "w-full": block,
-          "border border-orange-900 text-orange-900 bg-white hover:bg-gray-200":
+          "border border-blue-900 text-blue-900 bg-white hover:bg-gray-200":
             secondary,
-          "bg-orange-700 text-white hover:bg-orange-800": !secondary,
+          "bg-blue-700 text-white hover:bg-blue-800": !secondary,
         },
         className
       )}

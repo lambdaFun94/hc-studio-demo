@@ -10,9 +10,9 @@ type Props = {
 
 const Section = ({ className, children, title }: Props) => {
   return (
-    <div className={cx("", className)}>
+    <div>
       <div className="text-xl font-medium mb-2">{title}</div>
-      <div>{children}</div>
+      <div className={cx("", className)}>{children}</div>
     </div>
   );
 };

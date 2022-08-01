@@ -1,6 +1,7 @@
 import { useAnswersState } from "@yext/answers-headless-react";
 import { FilterSearch } from "@yext/answers-react-components";
 import * as React from "react";
+import { FaChevronRight } from "react-icons/fa";
 
 interface Props {
   onHover: (result: any) => void;
@@ -56,9 +57,9 @@ const LocationResults = () => {
           <div className="flex-grow overflow-y-auto">
             {vertical.results?.map((r) => {
               const location = r.rawData as any;
-              const { address, mainPhone } = location;
+              const { address, mainPhone, slug } = location;
               return (
-                <div className="p-4 border-b hover:bg-orange-100" key={r.id}>
+                <div className="p-4 border-b hover:bg-blue-100" key={r.id}>
                   <div className="text-lg mb-1 font-medium">{r.name}</div>
                   <a className="mb-1 block" href={`tel:${mainPhone}`}>
                     {formatPhoneNumber(mainPhone)}
@@ -68,6 +69,10 @@ const LocationResults = () => {
                   <div>
                     {address.city}, {address.region}, {address.postalCode}
                   </div>
+                  <a href={slug} className="flex gap-2 items-center mt-4">
+                    View Details
+                    <FaChevronRight />
+                  </a>
                 </div>
               );
             })}

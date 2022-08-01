@@ -1,5 +1,6 @@
 //@ts-ignore
 import mapboxgl from "mapbox-gl";
+import { Coordinate } from "./types/kg";
 
 export const sortProps = (obj: any, keys: string[]) => {
   keys.forEach((key) => {
@@ -74,4 +75,25 @@ export const calculateBoundingArea = (results: any[]): BoundingArea => {
     centerLng,
     centerLat,
   };
+};
+
+/*
+ "https://maps.googleapis.com/maps/api/staticmap?center=" +
+            `${latitude}` +
+            "," +
+            `${longitude}` +
+            "&zoom=14&size=600x400&maptype=roadmap&markers=color:red%7Clabel:LL%7C" +
+            `${latitude}` +
+            "," +
+            `${longitude}` +
+            "&key=AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18"
+            */
+
+export const staticMapUrl = (
+  { latitude, longitude }: Coordinate,
+  width = 300,
+  height = 300,
+  zoom = 13
+) => {
+  return `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=${zoom}&size=${width}x${height}&maptype=roadmap&markers=color:red%7Clabel:LL%7C${latitude},${longitude}&key=AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18&scale=2`;
 };
