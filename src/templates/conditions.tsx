@@ -1,11 +1,12 @@
 import {
-  Data,
-  Default,
   GetHeadConfig,
   GetPath,
   HeadConfig,
+  Template,
   TemplateConfig,
-} from "@yext/yext-sites-scripts";
+  TemplateProps,
+  TemplateRenderProps,
+} from "@yext/pages";
 import * as React from "react";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
@@ -42,15 +43,15 @@ export const config: TemplateConfig = {
   },
 };
 
-export const getPath: GetPath<Data> = ({ document }) => {
-  const condition = document.streamOutput as Taxonomy_Condition;
+export const getPath: GetPath<TemplateProps> = ({ document }) => {
+  const condition = document as Taxonomy_Condition;
   return condition.slug;
 };
 
-export const getHeadConfig: GetHeadConfig<Data> = ({
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
 }): HeadConfig => {
-  const condition = document.streamOutput as Taxonomy_Condition;
+  const condition = document as Taxonomy_Condition;
   return {
     title: condition.name,
     charset: "UTF-8",
@@ -58,8 +59,8 @@ export const getHeadConfig: GetHeadConfig<Data> = ({
   };
 };
 
-const ConditionsPage: Default<Data> = ({ document }) => {
-  const condition = document.streamOutput as Taxonomy_Condition;
+const ConditionsPage: Template<TemplateRenderProps> = ({ document }) => {
+  const condition = document as Taxonomy_Condition;
   const subtitle =
     condition.taxonomy_synonyms?.length > 0
       ? `aka ${condition.taxonomy_synonyms?.join(", ")}`

@@ -1,11 +1,12 @@
 import {
-  Data,
-  Default,
   GetHeadConfig,
   GetPath,
   HeadConfig,
+  Template,
   TemplateConfig,
-} from "@yext/yext-sites-scripts";
+  TemplateProps,
+  TemplateRenderProps,
+} from "@yext/pages";
 import * as React from "react";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
@@ -43,23 +44,23 @@ export const config: TemplateConfig = {
   },
 };
 
-export const getPath: GetPath<Data> = ({ document }) => {
-  const visitReason = document.streamOutput as Taxonomy_ReasonForVisit;
+export const getPath: GetPath<TemplateProps> = ({ document }) => {
+  const visitReason = document as Taxonomy_ReasonForVisit;
   return visitReason.slug;
 };
 
-export const getHeadConfig: GetHeadConfig<Data> = ({
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
 }): HeadConfig => {
-  const visitReason = document.streamOutput as Taxonomy_ReasonForVisit;
+  const visitReason = document as Taxonomy_ReasonForVisit;
   return {
     ...defaultHeadConfig,
     title: visitReason.name,
   };
 };
 
-const VisitReasonPage: Default<Data> = ({ document }) => {
-  const visitReason = document.streamOutput as Taxonomy_ReasonForVisit;
+const VisitReasonPage: Template<TemplateRenderProps> = ({ document }) => {
+  const visitReason = document as Taxonomy_ReasonForVisit;
 
   const subtitle =
     visitReason.taxonomy_synonyms?.length > 0

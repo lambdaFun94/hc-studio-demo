@@ -9,30 +9,33 @@
  */
 
 import {
-  Data,
-  Default,
   GetHeadConfig,
   GetPath,
   HeadConfig,
-} from "@yext/yext-sites-scripts";
+  Template,
+  TemplateProps,
+  TemplateRenderProps,
+} from "@yext/pages";
 import * as React from "react";
 import PageLayout from "../components/PageLayout";
 import UniversalSearchResults from "../components/search/UniversalSearchResults";
 import "../index.css";
 import { defaultHeadConfig } from "../utilities";
 
-export const getPath: GetPath<Data> = (data) => {
+export const getPath: GetPath<TemplateProps> = (data) => {
   return `search`;
 };
 
-export const getHeadConfig: GetHeadConfig<Data> = (data): HeadConfig => {
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (
+  data
+): HeadConfig => {
   return {
     ...defaultHeadConfig,
     title: "Search Results",
   };
 };
 
-const SearchResultsPage: Default<Data> = (data) => {
+const SearchResultsPage: Template<TemplateRenderProps> = (data) => {
   const { document } = data;
   const { streamOutput } = document;
 

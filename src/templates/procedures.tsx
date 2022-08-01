@@ -1,12 +1,13 @@
 import {
-  Data,
-  Default,
   GetHeadConfig,
   GetPath,
-  GetStaticProps,
   HeadConfig,
+  Template,
   TemplateConfig,
-} from "@yext/yext-sites-scripts";
+  TemplateProps,
+  TemplateRenderProps,
+  TransformProps,
+} from "@yext/pages";
 import * as React from "react";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
@@ -46,15 +47,15 @@ export const config: TemplateConfig = {
   },
 };
 
-export const getPath: GetPath<Data> = ({ document }) => {
-  const procedure = document.streamOutput as Taxonomy_Procedure;
+export const getPath: GetPath<TemplateProps> = ({ document }) => {
+  const procedure = document as Taxonomy_Procedure;
   return procedure.slug;
 };
 
-export const getHeadConfig: GetHeadConfig<Data> = ({
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
 }): HeadConfig => {
-  const procedure = document.streamOutput as Taxonomy_Procedure;
+  const procedure = document as Taxonomy_Procedure;
   return {
     title: procedure.name,
     charset: "UTF-8",
@@ -62,10 +63,10 @@ export const getHeadConfig: GetHeadConfig<Data> = ({
   };
 };
 
-export const getStaticProps: GetStaticProps<Data> = async (input) => {
-  const procedure = input.document.streamOutput as Taxonomy_Procedure;
+export const transformProps: TransformProps<TemplateProps> = async (input) => {
+  const procedure = input.document as Taxonomy_Procedure;
 
-  input.document.streamOutput = sortProps(procedure, [
+  input.document = sortProps(procedure, [
     "c_providersWithSpecialty",
     "taxonomy_relatedConditions",
     "taxonomy_relatedReasonsForVisit",
@@ -76,8 +77,8 @@ export const getStaticProps: GetStaticProps<Data> = async (input) => {
   return input;
 };
 
-const ProcedurePage: Default<Data> = ({ document }) => {
-  const procedure = document.streamOutput as Taxonomy_Procedure;
+const ProcedurePage: Template<TemplateRenderProps> = ({ document }) => {
+  const procedure = document as Taxonomy_Procedure;
 
   return (
     <PageLayout title={procedure.name} subtitle={procedure.description}>

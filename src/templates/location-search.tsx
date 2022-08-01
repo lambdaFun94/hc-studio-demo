@@ -1,11 +1,10 @@
-import { Data, GetHeadConfig } from "@yext/yext-sites-scripts";
+import { GetHeadConfig, TemplateRenderProps } from "@yext/pages";
 import * as React from "react";
 import PageLayout from "../components/PageLayout";
 import LocationResults from "../components/search/locations/LocationResults";
 import ResultsMap from "../components/search/ResultsMap";
 import SearchExperience from "../components/search/SearchExperience";
 import { defaultHeadConfig } from "../utilities";
-
 type Props = {
   //Insert Props Here
   className?: string;
@@ -15,7 +14,7 @@ export const getPath = () => {
   return `locations`;
 };
 
-export const getHeadConfig: GetHeadConfig<Data> = () => {
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = () => {
   return {
     ...defaultHeadConfig,
     title: "Find a Location",

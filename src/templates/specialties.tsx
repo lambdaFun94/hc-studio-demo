@@ -1,12 +1,13 @@
 import {
-  Data,
-  Default,
   GetHeadConfig,
   GetPath,
-  GetStaticProps,
   HeadConfig,
+  Template,
   TemplateConfig,
-} from "@yext/yext-sites-scripts";
+  TemplateProps,
+  TemplateRenderProps,
+  TransformProps,
+} from "@yext/pages";
 import * as React from "react";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
@@ -58,15 +59,15 @@ export const config: TemplateConfig = {
   },
 };
 
-export const getPath: GetPath<Data> = ({ document }) => {
-  const specialty = document.streamOutput as Taxonomy_Specialty;
+export const getPath: GetPath<TemplateProps> = ({ document }) => {
+  const specialty = document as Taxonomy_Specialty;
   return `${specialty.slug}`;
 };
 
-export const getHeadConfig: GetHeadConfig<Data> = ({
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
 }): HeadConfig => {
-  const specialty = document.streamOutput as Taxonomy_Specialty;
+  const specialty = document as Taxonomy_Specialty;
   return {
     title: specialty.name,
     charset: "UTF-8",
@@ -74,10 +75,10 @@ export const getHeadConfig: GetHeadConfig<Data> = ({
   };
 };
 
-export const getStaticProps: GetStaticProps<Data> = async (input) => {
-  var specialty = input.document.streamOutput as Taxonomy_Specialty;
+export const transformProps: TransformProps<TemplateProps> = async (input) => {
+  var specialty = input.document as Taxonomy_Specialty;
 
-  input.document.streamOutput = sortProps(specialty, [
+  input.document = sortProps(specialty, [
     "c_providersWithSpecialty",
     "taxonomy_relatedConditions",
     "taxonomy_relatedReasonsForVisit",
@@ -87,8 +88,8 @@ export const getStaticProps: GetStaticProps<Data> = async (input) => {
 
   return input;
 };
-const SpecialtyPage: Default<Data> = ({ document }) => {
-  const specialty = document.streamOutput as Taxonomy_Specialty;
+const SpecialtyPage: Template<TemplateRenderProps> = ({ document }) => {
+  const specialty = document as Taxonomy_Specialty;
 
   const subtitle =
     specialty.taxonomy_synonyms?.length > 0

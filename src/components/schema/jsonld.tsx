@@ -14,12 +14,12 @@ export const LocalBusinessSchemaWrapper = (data: any) => {
   return JsonLd<LocalBusiness>({
     "@context": "https://schema.org",
     "@type": "LocalBusiness", // TODO: change this to match the current project's business type
-    name: data.document.streamOutput.name,
-    address: parseAddress(data.document.streamOutput.address),
-    description: data.document.streamOutput.description,
-    telephone: data.document.streamOutput.mainPhone,
-    image: parsePhotoGallery(data.document.streamOutput.photoGallery),
-    openingHours: parseOpeningHours(data.document.streamOutput.hours),
+    name: data.document.name,
+    address: parseAddress(data.document.address),
+    description: data.document.description,
+    telephone: data.document.mainPhone,
+    image: parsePhotoGallery(data.document.photoGallery),
+    openingHours: parseOpeningHours(data.document.hours),
   });
 };
 

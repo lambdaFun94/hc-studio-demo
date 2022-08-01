@@ -1,11 +1,12 @@
 import {
-  Data,
-  Default,
   GetHeadConfig,
   GetPath,
   HeadConfig,
+  Template,
   TemplateConfig,
-} from "@yext/yext-sites-scripts";
+  TemplateProps,
+  TemplateRenderProps,
+} from "@yext/pages";
 import * as React from "react";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
@@ -48,16 +49,16 @@ export const config: TemplateConfig = {
   },
 };
 
-export const getPath: GetPath<Data> = ({ document }) => {
-  const doctor = document.streamOutput as HealthcareProfessional &
+export const getPath: GetPath<TemplateProps> = ({ document }) => {
+  const doctor = document as HealthcareProfessional &
     HealthcareProfessionalCustomFields;
   return `${doctor.slug}`;
 };
 
-export const getHeadConfig: GetHeadConfig<Data> = ({
+export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   document,
 }): HeadConfig => {
-  const doctor = document.streamOutput as HealthcareProfessional &
+  const doctor = document as HealthcareProfessional &
     HealthcareProfessionalCustomFields;
   return {
     title: doctor.name,
@@ -66,8 +67,8 @@ export const getHeadConfig: GetHeadConfig<Data> = ({
   };
 };
 
-const DoctorPage: Default<Data> = ({ document }) => {
-  const doctor = document.streamOutput as HealthcareProfessional &
+const DoctorPage: Template<TemplateRenderProps> = ({ document }) => {
+  const doctor = document as HealthcareProfessional &
     HealthcareProfessionalCustomFields;
 
   return (
