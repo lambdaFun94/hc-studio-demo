@@ -17,7 +17,6 @@ import {
   HealthcareProfessional,
   HealthcareProfessionalCustomFields,
 } from "../../../types/kg";
-import Button from "../../Button";
 import Img, { Image } from "../../Img";
 
 const DoctorCard = ({ result }: CardProps) => {
@@ -89,39 +88,38 @@ const DoctorCard = ({ result }: CardProps) => {
             {/* <pre>{JSON.stringify(result.rawData, null, 2)}</pre> */}
           </div>
         </div>
-
-        <div className="flex flex-col gap-2 p-4">
-          <Button icon={<FaCalendar />} block secondary>
-            Book Appointment
-          </Button>
-        </div>
       </div>
       {c_locationsPracticingAt && (
-        <div className="border-t mt-4 p-2 bg-gray-100">
+        <div className="border-t mt-4 p-4 bg-gray-100 ">
           <div className="text-sm text-gray-700 font-medium uppercase tracking-wider">
             Practicing Locations (
             {c_locationsPracticingAt.length.toLocaleString()})
           </div>
-          <div className="flex gap-4 mt-4">
-            {c_locationsPracticingAt.map((l) => (
-              <div
-                id={l.id}
-                className="p-4 rounded border flex flex-col gap-4 bg-white "
-              >
-                <a className="flex items-center gap-2">
-                  <FaMapMarker className="flex-none" />
-                  <div>{l.name}</div>
-                </a>
-                <div className="flex gap-4">
-                  <a className="border p-2 rounded-full bg-gray-100 hover:bg-gray-300">
-                    <FaDirections />
+          <div className="overflow-x-auto">
+            <div className="flex gap-4 mt-4 ">
+              {c_locationsPracticingAt.map((l) => (
+                <div
+                  id={l.id}
+                  className="p-3 rounded border flex flex-col gap-4 bg-white w-48 flex-none"
+                >
+                  <a className="flex items-center gap-2">
+                    <FaMapMarker className="flex-none" />
+                    <div>{l.name}</div>
                   </a>
-                  <a className="border p-2 rounded-full bg-gray-100 hover:bg-gray-300">
-                    <FaPhone />
-                  </a>
+                  <div className="flex gap-4">
+                    <a className="border p-2 rounded-full bg-gray-100 hover:bg-gray-300">
+                      <FaDirections />
+                    </a>
+                    <a className="border p-2 rounded-full bg-gray-100 hover:bg-gray-300">
+                      <FaPhone />
+                    </a>
+                    <a className="border p-2 rounded-full bg-gray-100 hover:bg-gray-300">
+                      <FaCalendar />
+                    </a>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       )}

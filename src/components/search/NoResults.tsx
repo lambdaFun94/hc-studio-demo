@@ -22,6 +22,10 @@ const NoResults = ({ className }: Props) => {
     isLoading
   ) {
     return null;
+  } else if (!vertical) {
+    return null;
+  } else if (!vertical.results) {
+    return null;
   }
 
   return (
