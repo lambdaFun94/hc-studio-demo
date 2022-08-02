@@ -14,9 +14,8 @@ import {
   FaHeartbeat,
   FaMoneyBill,
 } from "react-icons/fa";
-import Footer from "../components/Footer";
 import GridSection from "../components/GridSection";
-import Header from "../components/Header";
+import PageLayout from "../components/PageLayout";
 import DoctorFinderSearchBar from "../components/search/DoctorFinderSearchBar";
 //@ts-ignore
 import officeImage from "../images/homepage-background.jpg?w=1200&h=600";
@@ -86,41 +85,29 @@ const Index: Template<TemplateRenderProps> = ({ document }) => {
   //   __site: { c_featuredSpecialties, c_featuredProcedures },
   // } = data.document as any as { __site: Site };
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <div className="flex-grow mx-auto w-full max-w-screen-lg px-2 py-4">
-        <div className="flex flex-col gap-8 mb-8">
-          <img src={officeImage} className="rounded-xl" />
-          <div className="lg:-mt-36 lg:mx-24 bg-gray-100 shadow-lg rounded-lg bg-opacity-90">
-            <DoctorFinderSearchBar headline={c_headline} />
-          </div>
-          <div className="grid md:grid-cols-4 gap-4">
-            {keyActions.map((a) => (
-              <div
-                key={a.label}
-                className="bg-gray-100 flex items-center justify-center gap-4 flex-col py-10 hover:bg-blue-700 group transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
-              >
-                <div className="text-4xl text-blue-700 group-hover:text-white transition-colors">
-                  {a.icon}
-                </div>
-                <div className="text-2xl font-bold text-center group-hover:text-white transition-colors">
-                  {a.label}
-                </div>
-              </div>
-            ))}
-          </div>
-          <GridSection
-            title="Feature Specialties"
-            items={c_featuredSpecialties}
-          />
-          <GridSection
-            title="Feature Procedures"
-            items={c_featuredProcedures}
-          />
-        </div>
+    <PageLayout hideTitle>
+      <img src={officeImage} className="rounded-xl" />
+      <div className="lg:-mt-36 lg:mx-24 bg-gray-100 shadow-lg rounded-lg bg-opacity-90">
+        <DoctorFinderSearchBar headline={c_headline} />
       </div>
-      <Footer />
-    </div>
+      <div className="grid md:grid-cols-4 gap-4">
+        {keyActions.map((a) => (
+          <div
+            key={a.label}
+            className="bg-gray-100 flex items-center justify-center gap-4 flex-col py-10 hover:bg-blue-700 group transition-all hover:scale-105 hover:shadow-lg cursor-pointer"
+          >
+            <div className="text-4xl text-blue-700 group-hover:text-white transition-colors">
+              {a.icon}
+            </div>
+            <div className="text-2xl font-bold text-center group-hover:text-white transition-colors">
+              {a.label}
+            </div>
+          </div>
+        ))}
+      </div>
+      <GridSection title="Feature Specialties" items={c_featuredSpecialties} />
+      <GridSection title="Feature Procedures" items={c_featuredProcedures} />
+    </PageLayout>
   );
 };
 
