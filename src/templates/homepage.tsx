@@ -14,7 +14,6 @@ import {
   FaHeartbeat,
   FaMoneyBill,
 } from "react-icons/fa";
-import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
 import DoctorFinderSearchBar from "../components/search/DoctorFinderSearchBar";
 //@ts-ignore
@@ -30,12 +29,12 @@ export const config: TemplateConfig = {
       "meta",
       "name",
       "c_headline",
-      "c_featuredProcedures.id",
-      "c_featuredProcedures.name",
-      "c_featuredProcedures.slug",
-      "c_featuredSpecialties.id",
-      "c_featuredSpecialties.slug",
-      "c_featuredSpecialties.name",
+      // "c_featuredProcedures.id",
+      // "c_featuredProcedures.name",
+      // "c_featuredProcedures.slug",
+      // "c_featuredSpecialties.id",
+      // "c_featuredSpecialties.slug",
+      // "c_featuredSpecialties.name",
     ],
     filter: {
       entityTypes: ["ce_homePage"],
@@ -107,8 +106,8 @@ const HomePage: Template<TemplateRenderProps> = ({ document }) => {
           </div>
         ))}
       </div>
-      <GridSection title="Feature Specialties" items={c_featuredSpecialties} />
-      <GridSection title="Feature Procedures" items={c_featuredProcedures} />
+      {/* <GridSection title="Feature Specialties" items={c_featuredSpecialties} /> */}
+      {/* <GridSection title="Feature Procedures" items={c_featuredProcedures} /> */}
     </PageLayout>
   );
 };
