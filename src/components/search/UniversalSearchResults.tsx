@@ -26,7 +26,7 @@ const UniversalSearchResults = ({ className }: Props) => {
       />
       <UniversalResults
         verticalConfigMap={{
-          healthcare_professionals: {
+          doctors: {
             ...defaultVerticalConfig,
             viewAllButton: true,
             getViewAllUrl: ({ query }) => `/doctors?query=${query}`,

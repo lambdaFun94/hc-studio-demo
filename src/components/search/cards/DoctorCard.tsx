@@ -97,7 +97,7 @@ const DoctorCard = ({ result }: CardProps) => {
         </div>
       </div>
       {c_locationsPracticingAt && (
-        <div className="border-t mt-4 p-4 bg-gray-100">
+        <div className="border-t mt-4 p-2 bg-gray-100">
           <div className="text-sm text-gray-700 font-medium uppercase tracking-wider">
             Practicing Locations (
             {c_locationsPracticingAt.length.toLocaleString()})
