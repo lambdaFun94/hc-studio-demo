@@ -3,7 +3,6 @@ import {
   GetPath,
   HeadConfig,
   Template,
-  TemplateConfig,
   TemplateProps,
   TemplateRenderProps,
 } from "@yext/pages";
@@ -21,30 +20,30 @@ import officeImage from "../images/homepage-background.jpg?w=1200&h=600";
 import "../index.css";
 import { defaultHeadConfig } from "../utilities";
 
-export const config: TemplateConfig = {
-  stream: {
-    $id: "homepage-stream",
-    fields: [
-      "id",
-      "meta",
-      "name",
-      "c_headline",
-      // "c_featuredProcedures.id",
-      // "c_featuredProcedures.name",
-      // "c_featuredProcedures.slug",
-      // "c_featuredSpecialties.id",
-      // "c_featuredSpecialties.slug",
-      // "c_featuredSpecialties.name",
-    ],
-    filter: {
-      entityTypes: ["ce_homePage"],
-    },
-    localization: {
-      locales: ["en"],
-      primary: false,
-    },
-  },
-};
+// export const config: TemplateConfig = {
+//   stream: {
+//     $id: "homepage-stream",
+//     fields: [
+//       "id",
+//       "meta",
+//       "name",
+//       "c_headline",
+//       // "c_featuredProcedures.id",
+//       // "c_featuredProcedures.name",
+//       // "c_featuredProcedures.slug",
+//       // "c_featuredSpecialties.id",
+//       // "c_featuredSpecialties.slug",
+//       // "c_featuredSpecialties.name",
+//     ],
+//     filter: {
+//       entityTypes: ["ce_homePage"],
+//     },
+//     localization: {
+//       locales: ["en"],
+//       primary: false,
+//     },
+//   },
+// };
 
 export const getPath: GetPath<TemplateProps> = (data) => {
   return `index.html`;
@@ -81,7 +80,7 @@ const keyActions: {
 ];
 
 const HomePage: Template<TemplateRenderProps> = ({ document }) => {
-  const { c_featuredProcedures, c_featuredSpecialties, c_headline } = document;
+  // const { c_featuredProcedures, c_featuredSpecialties, c_headline } = document;
   // const {
   //   __site: { c_featuredSpecialties, c_featuredProcedures },
   // } = data.document as any as { __site: Site };
@@ -89,7 +88,7 @@ const HomePage: Template<TemplateRenderProps> = ({ document }) => {
     <PageLayout hideTitle>
       <img src={officeImage} className="rounded-xl" />
       <div className="lg:-mt-36 lg:mx-24 bg-gray-100 shadow-lg rounded-lg bg-opacity-90">
-        <DoctorFinderSearchBar headline={c_headline} />
+        <DoctorFinderSearchBar headline="Find a Provider" />
       </div>
       <div className="grid md:grid-cols-4 gap-4">
         {keyActions.map((a) => (
