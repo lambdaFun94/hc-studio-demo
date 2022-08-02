@@ -25,10 +25,9 @@ import { defaultHeadConfig } from "../utilities";
 export const config: TemplateConfig = {
   stream: {
     $id: "homepage-stream",
-    filter: {
-      entityTypes: ["ce_homePage"],
-    },
     fields: [
+      "id",
+      "meta",
       "name",
       "c_headline",
       "c_featuredProcedures.id",
@@ -38,6 +37,9 @@ export const config: TemplateConfig = {
       "c_featuredSpecialties.slug",
       "c_featuredSpecialties.name",
     ],
+    filter: {
+      entityTypes: ["ce_homePage"],
+    },
     localization: {
       locales: ["en"],
       primary: false,
