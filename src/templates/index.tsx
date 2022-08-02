@@ -85,7 +85,7 @@ const Index: Template<TemplateRenderProps> = ({ document }) => {
   //   __site: { c_featuredSpecialties, c_featuredProcedures },
   // } = data.document as any as { __site: Site };
   return (
-    <PageLayout>
+    <PageLayout hideTitle>
       <img src={officeImage} className="rounded-xl" />
       <div className="lg:-mt-36 lg:mx-24 bg-gray-100 shadow-lg rounded-lg bg-opacity-90">
         <DoctorFinderSearchBar headline={c_headline} />
