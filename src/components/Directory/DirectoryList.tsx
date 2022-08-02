@@ -25,7 +25,7 @@ export function DirectoryList(props: DirectoryListProps) {
                 {count} locations in {name}
             </h1>
             <ul className="flex flex-wrap">
-                {directoryChildren.map((child: any, idx: number) => (
+                {directoryChildren != undefined ? directoryChildren.map((child: any, idx: number) => (
                     <li className="Directory-listItem" key={idx}>
                         <a
                             className="Directory-listLink m-6"
@@ -35,7 +35,7 @@ export function DirectoryList(props: DirectoryListProps) {
                             {child.name}
                         </a>
                     </li>
-                ))}
+                )) : ''}
             </ul>
         </div>
     )
