@@ -79,7 +79,7 @@ const keyActions: {
   },
 ];
 
-const Index: Template<TemplateRenderProps> = ({ document }) => {
+const HomePage: Template<TemplateRenderProps> = ({ document }) => {
   const { c_featuredProcedures, c_featuredSpecialties, c_headline } = document;
   // const {
   //   __site: { c_featuredSpecialties, c_featuredProcedures },
@@ -111,4 +111,4 @@ const Index: Template<TemplateRenderProps> = ({ document }) => {
   );
 };
 
-export default Index;
+export default HomePage;
