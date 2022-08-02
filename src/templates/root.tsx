@@ -41,7 +41,9 @@ const Root: Template<TemplateRenderProps> = (data) => {
 
 
     return (
-        <PageLayout>
+        <PageLayout
+            title="Facilities in the US"
+            breadcrumbs={[{ label: "All Facilities", href: "/" }]}>
             <div>
                 <DirectoryList
                     name={name}

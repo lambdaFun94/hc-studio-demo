@@ -39,7 +39,10 @@ const CityDirectory: Template<TemplateRenderProps> = (data) => {
 
 
     return (
-        <PageLayout>
+        <PageLayout
+            title={`Health Care Facilities in ${name}`}
+            breadcrumbs={[{ label: `label`, href: "/" }]}
+        >
             <div>
                 <DirectoryList
                     name={name}

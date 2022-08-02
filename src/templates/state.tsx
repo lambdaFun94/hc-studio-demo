@@ -30,16 +30,18 @@ export const config: TemplateConfig = {
     },
 };
 
-export const getPath: GetPath<TemplateProps> = (data) => {
-    return data.document.slug;
+export const getPath: GetPath<TemplateProps> = ({ document }) => {
+    return document.slug;
 };
 
 const StateDirectory: Template<TemplateRenderProps> = (data) => {
     const { name, dm_directoryChildren, dm_directoryChildrenCount } = data.document;
 
-
     return (
-        <PageLayout>
+        <PageLayout
+            title={`Health Care Facilities in ${name}`}
+            breadcrumbs={[{ label: `${name}`, href: "/" }]}
+        >
             <div>
                 <DirectoryList
                     name={name}
