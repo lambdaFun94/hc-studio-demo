@@ -23,11 +23,10 @@ import "../index.css";
 import { defaultHeadConfig } from "../utilities";
 
 export const config: TemplateConfig = {
-  name: "homepage",
   stream: {
     $id: "homepage-stream",
     filter: {
-      entityIds: ["9042039302025980266"],
+      entityTypes: ["ce_homePage"],
     },
     fields: [
       "name",
