@@ -1,5 +1,6 @@
 //@ts-ignore
 import mapboxgl from "mapbox-gl";
+import { DirectoryChild } from "./components/Directory/DirectoryList";
 import { Coordinate } from "./types/kg";
 
 export const sortProps = (obj: any, keys: string[]) => {
@@ -97,3 +98,9 @@ export const staticMapUrl = (
 ) => {
   return `https://maps.googleapis.com/maps/api/staticmap?center=${latitude},${longitude}&zoom=${zoom}&size=${width}x${height}&maptype=roadmap&markers=color:red%7Clabel:LL%7C${latitude},${longitude}&key=AIzaSyDZNQlSlEIkFAct5VzUtsP4dSbvOr2bE18&scale=2`;
 };
+
+export const buildBreadCrumbs = (arr: DirectoryChild[], pathToParent: string) => {
+  const reval = arr.map(child => ({ label: child.name, href: pathToParent + child.slug }))
+  console.log(reval)
+  return reval;
+}

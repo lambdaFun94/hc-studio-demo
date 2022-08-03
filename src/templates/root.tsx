@@ -9,6 +9,8 @@ import {
 import { DirectoryList, directoryListFields } from "../components/Directory/DirectoryList"
 import PageLayout from "../components/PageLayout";
 
+const path = 'location/directory';
+
 export const config: TemplateConfig = {
     stream: {
         $id: "directory-root",
@@ -32,8 +34,8 @@ export const config: TemplateConfig = {
     },
 };
 
-export const getPath: GetPath<TemplateProps> = (data) => {
-    return data.document.slug;
+export const getPath: GetPath<TemplateProps> = ({ document }) => {
+    return document.slug;
 };
 
 const Root: Template<TemplateRenderProps> = (data) => {
@@ -42,8 +44,11 @@ const Root: Template<TemplateRenderProps> = (data) => {
 
     return (
         <PageLayout
-            title="Facilities in the US"
-            breadcrumbs={[{ label: "All Facilities", href: "/" }]}>
+            title={`Health Care Facilities`}
+            breadcrumbs={
+                [{ label: "All Locations", href: "/locations" }]
+            }
+        >
             <div>
                 <DirectoryList
                     name={name}

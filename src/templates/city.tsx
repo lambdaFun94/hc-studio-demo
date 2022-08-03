@@ -8,6 +8,7 @@ import {
 } from "@yext/pages";
 import { DirectoryList, directoryListFields } from "../components/Directory/DirectoryList"
 import PageLayout from "../components/PageLayout";
+import { buildBreadCrumbs } from "../utilities"
 
 export const config: TemplateConfig = {
     stream: {
@@ -35,18 +36,19 @@ export const getPath: GetPath<TemplateProps> = (data) => {
 };
 
 const CityDirectory: Template<TemplateRenderProps> = (data) => {
-    const { name, dm_directoryChildren, dm_directoryChildrenCount } = data.document;
-
+    const { name, dm_directoryChildren, dm_directoryChildrenCount, dm_directoryParents } = data.document;
 
     return (
         <PageLayout
             title={`Health Care Facilities in ${name}`}
-            breadcrumbs={[{ label: `label`, href: "/" }]}
-        >
+            breadcrumbs={[
+                { label: "All Locations", href: "/locations" },
+                ...buildBreadCrumbs(dm_directoryParents, data.relativePrefixToRoot)
+            ]}>
             <div>
                 <DirectoryList
                     name={name}
-                    showNumLocs={true}
+                    showNumLocs={false}
                     count={dm_directoryChildrenCount}
                     directoryChildren={dm_directoryChildren}
                     relativePrefixToRoot={data.relativePrefixToRoot}
