@@ -4,15 +4,7 @@
     "entityIds": ["site"]
   },
   "source": "knowledgeGraph",
-  "fields": [
-    "name",
-    "c_featuredProcedures.id",
-    "c_featuredProcedures.name",
-    "c_featuredProcedures.slug",
-    "c_featuredSpecialties.id",
-    "c_featuredSpecialties.slug",
-    "c_featuredSpecialties.name"
-  ],
+  "fields": ["name"],
   "localization": {
     "locales": ["en"],
     "primary": false
