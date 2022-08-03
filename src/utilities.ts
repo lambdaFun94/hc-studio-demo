@@ -100,5 +100,5 @@ export const staticMapUrl = (
 };
 
 export const buildBreadCrumbs = (arr: DirectoryChild[], pathToParent: string) => (
-  arr.map(child => ({ label: child.name, href: pathToParent + child.slug }))
+  arr != undefined ? arr.map(child => ({ label: child.name, href: pathToParent + child.slug })) : []
 )
