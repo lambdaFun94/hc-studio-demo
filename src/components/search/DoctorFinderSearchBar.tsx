@@ -85,7 +85,7 @@ export default ({ headline }: { headline: string }) => (
   <AnswersHeadlessProvider
     headlessId="doctor-finder"
     {...searchConfig}
-    verticalKey="healthcare_professionals"
+    verticalKey="doctors"
   >
     <DoctorFinderSearchBar headline={headline} />
   </AnswersHeadlessProvider>
