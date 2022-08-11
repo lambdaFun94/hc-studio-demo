@@ -34,11 +34,11 @@ const DoctorFinderSearchBar = ({
               sectioned={true}
               searchFields={[
                 {
-                  entityType: "healthcareProfessional",
+                  entityType: "ce_doctor",
                   fieldApiName: "c_specialty.name",
                 },
                 {
-                  entityType: "healthcareProfessional",
+                  entityType: "ce_doctor",
                   fieldApiName: "name",
                 },
                 // {
