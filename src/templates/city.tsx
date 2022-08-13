@@ -19,10 +19,11 @@ export const config: TemplateConfig = {
             "meta",
             "name",
             "slug",
+            "c_addressRegionDisplayName",
             ...directoryListFields
         ],
         filter: {
-            entityTypes: ["ce_city"],
+            savedFilterIds: ["dm_us-directory-2_address_city"]
         },
         localization: {
             locales: ["en"],
@@ -36,11 +37,11 @@ export const getPath: GetPath<TemplateProps> = (data) => {
 };
 
 const CityDirectory: Template<TemplateRenderProps> = (data) => {
-    const { name, dm_directoryChildren, dm_directoryChildrenCount, dm_directoryParents } = data.document;
+    const { name, dm_directoryChildren, dm_directoryChildrenCount, dm_directoryParents, c_addressRegionDisplayName } = data.document;
 
     return (
         <PageLayout
-            title={`Health Care Facilities in ${name}`}
+            title={`Health Care Facilities in ${c_addressRegionDisplayName}`}
             breadcrumbs={[
                 { label: "All Locations", href: "/locations" },
                 ...buildBreadCrumbs(dm_directoryParents, data.relativePrefixToRoot)
@@ -48,10 +49,10 @@ const CityDirectory: Template<TemplateRenderProps> = (data) => {
             <div>
                 <DirectoryList
                     name={name}
-                    showNumLocs={false}
                     count={dm_directoryChildrenCount}
                     directoryChildren={dm_directoryChildren}
                     relativePrefixToRoot={data.relativePrefixToRoot}
+                    isRoot={false}
                 />
             </div>
         </PageLayout>

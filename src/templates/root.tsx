@@ -20,6 +20,8 @@ export const config: TemplateConfig = {
             "meta",
             "name",
             "slug",
+            "c_addressRegionDisplayName",
+            "c_addressCountry",
             ...directoryListFields
         ],
         // Defines the scope of entities that qualify for this stream.
@@ -38,8 +40,8 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
     return document.slug;
 };
 
-const Root: Template<TemplateRenderProps> = (data) => {
-    const { name, dm_directoryChildren, dm_directoryChildrenCount } = data.document;
+const Root: Template<TemplateRenderProps> = ({ document }) => {
+    const { name, dm_directoryChildren, dm_directoryChildrenCount, c_addressCountry, relativePrefixToRoot } = document;
 
 
     return (
@@ -52,10 +54,10 @@ const Root: Template<TemplateRenderProps> = (data) => {
             <div>
                 <DirectoryList
                     name={name}
-                    showNumLocs={true}
                     count={dm_directoryChildrenCount}
                     directoryChildren={dm_directoryChildren}
-                    relativePrefixToRoot={data.relativePrefixToRoot}
+                    relativePrefixToRoot={relativePrefixToRoot}
+                    isRoot={true}
                 />
             </div>
         </PageLayout>

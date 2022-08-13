@@ -1,5 +1,7 @@
 import * as React from "react";
-import "../../styles/Directory.css";
+import "../.././styles/Directory.css"
+import GridSection from "../GridSection";
+
 
 export const directoryListFields = [
     "dm_directoryParents.slug",
@@ -7,15 +9,16 @@ export const directoryListFields = [
     "dm_directoryChildrenCount",
     "dm_directoryChildren.slug",
     "dm_directoryChildren.name",
+    "dm_directoryChildren.c_addressRegionDisplayName",
     "dm_directoryChildren.dm_directoryChildrenCount",
 ]
 
 interface DirectoryListProps {
     name: string;
     count: number;
-    showNumLocs: boolean;
     directoryChildren: DirectoryChild[]
     relativePrefixToRoot: string;
+    isRoot: boolean;
 }
 
 export interface DirectoryChild {
@@ -31,26 +34,13 @@ const sortByName = (x: DirectoryChild, y: DirectoryChild) => {
 }
 
 export function DirectoryList(props: DirectoryListProps) {
-    const { name, count, showNumLocs, directoryChildren, relativePrefixToRoot } = props;
+    const { directoryChildren, isRoot } = props;
     const sortedChildren = directoryChildren != undefined ? directoryChildren.sort(sortByName) : undefined;
 
     return (
-        <div className="container my-8">
-            <h1 className="mb-6">
-                {count} locations in {name}
-            </h1>
-            <ul>
-                {sortedChildren != undefined ? sortedChildren.map((child: any, idx: number) => (
-                    <li className="Directory-listItem" key={idx}>
-                        <a
-                            className="Directory-listLink m-6"
-                            href={relativePrefixToRoot + child.slug}
-                        >
-                            {child.name} {showNumLocs ? `(${child.dm_directoryChildrenCount})` : ''}
-                        </a>
-                    </li>
-                )) : ''}
-            </ul>
+        <div className="container my-10">
+            <GridSection title={"Locations"} items={sortedChildren} isRoot>
+            </GridSection>
         </div>
     )
 }

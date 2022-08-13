@@ -19,6 +19,7 @@ export const config: TemplateConfig = {
             "meta",
             "name",
             "slug",
+            "c_addressRegionDisplayName",
             ...directoryListFields
         ],
         filter: {
@@ -36,11 +37,11 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 };
 
 const StateDirectory: Template<TemplateRenderProps> = ({ document, relativePrefixToRoot }) => {
-    const { name, dm_directoryChildren, dm_directoryChildrenCount, dm_directoryParents } = document;
+    const { name, dm_directoryChildren, dm_directoryChildrenCount, dm_directoryParents, c_addressRegionDisplayName } = document;
 
     return (
         <PageLayout
-            title={`Health Care Facilities in ${name}`}
+            title={`Health Care Facilities in ${c_addressRegionDisplayName}`}
             breadcrumbs={
                 [
                     { label: "All Locations", href: "/locations" },
@@ -50,9 +51,11 @@ const StateDirectory: Template<TemplateRenderProps> = ({ document, relativePrefi
                 <DirectoryList
                     name={name}
                     showNumLocs={true}
+                    regionName={c_addressRegionDisplayName}
                     count={dm_directoryChildrenCount}
                     directoryChildren={dm_directoryChildren}
                     relativePrefixToRoot={relativePrefixToRoot}
+                    isRoot={false}
                 />
             </div>
         </PageLayout>

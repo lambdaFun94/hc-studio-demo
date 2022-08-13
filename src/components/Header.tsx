@@ -60,6 +60,12 @@ const Header = () => {
             >
               Specialties
             </a>
+            <a
+              href="/us-directory"
+              className="px-4 hover:bg-gray-300/50 rounded-full py-1 text-blue-900 transition-all"
+            >
+              Directory
+            </a>
           </div>
           <div className="flex gap-4 items-center justify-center">
             <Button>Log In</Button>
