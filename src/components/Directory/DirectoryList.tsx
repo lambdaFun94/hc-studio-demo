@@ -39,7 +39,7 @@ export function DirectoryList(props: DirectoryListProps) {
 
     return (
         <div className="container my-10">
-            <GridSection title={"Locations"} items={sortedChildren} isRoot>
+            <GridSection title={"Locations"} items={sortedChildren} isRoot={isRoot}>
             </GridSection>
         </div>
     )
