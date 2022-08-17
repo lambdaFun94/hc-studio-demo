@@ -34,11 +34,11 @@ const DoctorFinderSearchBar = ({
               sectioned={true}
               searchFields={[
                 {
-                  entityType: "healthcareProfessional",
+                  entityType: "ce_doctor",
                   fieldApiName: "c_specialty.name",
                 },
                 {
-                  entityType: "healthcareProfessional",
+                  entityType: "ce_doctor",
                   fieldApiName: "name",
                 },
                 // {
@@ -85,7 +85,7 @@ export default ({ headline }: { headline: string }) => (
   <AnswersHeadlessProvider
     headlessId="doctor-finder"
     {...searchConfig}
-    verticalKey="healthcare_professionals"
+    verticalKey="doctors"
   >
     <DoctorFinderSearchBar headline={headline} />
   </AnswersHeadlessProvider>
