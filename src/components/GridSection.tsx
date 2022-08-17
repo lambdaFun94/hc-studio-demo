@@ -10,16 +10,28 @@ type Props = {
   //Insert Props Here
   className?: string;
   title: string;
-  items?: {
-    id: string;
-    name: string;
-    slug: string;
-    image?: Image;
-    subtitle?: string;
-  }[];
+  items?: Item[];
+  isRoot?: boolean;
 };
 
-const GridSection = ({ className, title, items }: Props) => {
+type Item = {
+  id: string;
+  name: string;
+  slug: string;
+  image?: Image;
+  c_addressRegionDisplayName?: string;
+  dm_directoryChildrenCount?: number;
+  dm_directoryParents?: number[];
+  subtitle?: string;
+};
+
+const selectName = (item: Item, isRoot?: boolean) => {
+  const name = isRoot ? item.c_addressRegionDisplayName : item.name
+  const count = item.dm_directoryChildrenCount ? `(${item.dm_directoryChildrenCount})` : ''
+  return `${name} ${count}`
+}
+
+const GridSection = ({ className, title, items, isRoot }: Props) => {
   const [showAll, setShowAll] = useState(false);
 
   if (!items?.length || items.length === 0) return null;
@@ -49,7 +61,9 @@ const GridSection = ({ className, title, items }: Props) => {
                     </div>
                   )}
                   <div>
-                    <div className="font-medium">{item.name}</div>
+                    <div className="font-medium">
+                      {selectName(item, isRoot)}
+                    </div>
                     {item.subtitle && item.subtitle.length > 0 && (
                       <div className="text-gray-700 text-sm">
                         {item.subtitle}

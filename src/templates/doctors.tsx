@@ -89,7 +89,7 @@ const DoctorPage: Template<TemplateRenderProps> = ({ document }) => {
     >
       <GridSection title="Specialties" items={doctor.c_specialty} />
       {doctor.c_locationsPracticingAt && (
-        <Section title="Practing At" className="flex flex-col gap-4">
+        <Section title="Practicing At" className="flex flex-col gap-4">
           {doctor.c_locationsPracticingAt.map((l) => (
             <div id={l.id} className="flex gap-4 flex-col md:flex-row">
               <div>

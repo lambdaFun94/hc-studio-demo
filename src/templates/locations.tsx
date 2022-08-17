@@ -10,11 +10,12 @@ import {
 import * as React from "react";
 import { FaDirections, FaPhone } from "react-icons/fa";
 import Button from "../components/Button";
+import { DirectoryChild, directoryListFields } from "../components/Directory/DirectoryList";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
 import "../index.css";
 import { HealthcareFacility } from "../types/kg";
-import { defaultHeadConfig, staticMapUrl } from "../utilities";
+import { buildBreadCrumbs, defaultHeadConfig, staticMapUrl } from "../utilities";
 
 export const config: TemplateConfig = {
   stream: {
@@ -31,13 +32,14 @@ export const config: TemplateConfig = {
       "c_doctorsPracticingHere.id",
       "c_doctorsPracticingHere.name",
       "c_doctorsPracticingHere.slug",
+      ...directoryListFields
     ],
     filter: {
       entityTypes: ["healthcareFacility"],
     },
     // The entity language profiles that documents will be generated for.
     localization: {
-      locales: ["en"],
+      locales: ["en", "es", "fr"],
       primary: false,
     },
   },
@@ -60,17 +62,19 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   };
 };
 
-const LocationPage: Template<TemplateRenderProps> = ({ document }) => {
+const LocationPage: Template<TemplateRenderProps> = ({ relativePrefixToRoot, document }) => {
   const location = document as HealthcareFacility;
+  const { dm_directoryParents } = document;
   const { geocodedCoordinate, name, address, c_doctorsPracticingHere } =
     location;
 
   return (
     <PageLayout
       title={location.name}
-      //   image={geocodedCoordinate ? staticMapUrl(geocodedCoordinate) : undefined}
-      breadcrumbs={[{ label: "All Locations", href: "/locations" }]}
-    >
+      breadcrumbs={[
+        { label: "All Locations", href: "/locations" },
+        ...buildBreadCrumbs(dm_directoryParents, relativePrefixToRoot)
+      ]}>
       <div className="flex gap-4">
         {geocodedCoordinate && (
           <img
@@ -84,6 +88,7 @@ const LocationPage: Template<TemplateRenderProps> = ({ document }) => {
             <p>{name}</p>
             <p>{address.line1}</p>
             <p>{address.line2}</p>
+            <p>Paragraph</p>
             <p>
               {address.city}, {address.region}, {address.postalCode}
             </p>
@@ -96,7 +101,6 @@ const LocationPage: Template<TemplateRenderProps> = ({ document }) => {
           </Button>
         </div>
       </div>
-      {/* <pre>{JSON.stringify(location, null, 2)}</pre> */}
       <GridSection
         title="Doctors Practicing Here"
         items={c_doctorsPracticingHere}
