@@ -39,7 +39,7 @@ export const config: TemplateConfig = {
     },
     // The entity language profiles that documents will be generated for.
     localization: {
-      locales: ["en"],
+      locales: ["en", "es", "fr"],
       primary: false,
     },
   },
@@ -71,7 +71,6 @@ const LocationPage: Template<TemplateRenderProps> = ({ relativePrefixToRoot, doc
   return (
     <PageLayout
       title={location.name}
-      //   image={geocodedCoordinate ? staticMapUrl(geocodedCoordinate) : undefined}
       breadcrumbs={[
         { label: "All Locations", href: "/locations" },
         ...buildBreadCrumbs(dm_directoryParents, relativePrefixToRoot)
@@ -89,6 +88,7 @@ const LocationPage: Template<TemplateRenderProps> = ({ relativePrefixToRoot, doc
             <p>{name}</p>
             <p>{address.line1}</p>
             <p>{address.line2}</p>
+            <p>Paragraph</p>
             <p>
               {address.city}, {address.region}, {address.postalCode}
             </p>
@@ -101,7 +101,6 @@ const LocationPage: Template<TemplateRenderProps> = ({ relativePrefixToRoot, doc
           </Button>
         </div>
       </div>
-      {/* <pre>{JSON.stringify(location, null, 2)}</pre> */}
       <GridSection
         title="Doctors Practicing Here"
         items={c_doctorsPracticingHere}
