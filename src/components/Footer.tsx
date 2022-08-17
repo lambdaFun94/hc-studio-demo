@@ -61,9 +61,10 @@ const Footer = () => {
               <circle cx="4" cy="4" r="2" stroke="none"></circle>
             </svg>
           </a>
+          <a href="/us-directory" className=" text-black hover:text-blue-500">Directory</a>
         </span>
       </div>
-    </footer>
+    </footer >
   );
 };
 
