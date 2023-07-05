@@ -88,39 +88,7 @@ const DoctorPage: Template<TemplateRenderProps> = ({ document }) => {
       breadcrumbs={[{ label: "All Doctors", href: "/doctors" }]}
     >
       <GridSection title="Specialties" items={doctor.c_specialty} />
-      {doctor.c_locationsPracticingAt && (
-        <Section title="Practing At" className="flex flex-col gap-4">
-          {doctor.c_locationsPracticingAt.map((l) => (
-            <div id={l.id} className="flex gap-4 flex-col md:flex-row">
-              <div>
-                {l.geocodedCoordinate && (
-                  <StaticMap
-                    coordinates={l.geocodedCoordinate}
-                    width={400}
-                    height={200}
-                  />
-                )}
-              </div>
-              <div className="flex flex-col gap-2">
-                <div>
-                  <p className="font-bold">{l.name}</p>
-                  <p>{l.address.line1}</p>
-                  <p>{l.address.line2}</p>
-                  <p>
-                    {l.address.city}, {l.address.region}, {l.address.postalCode}
-                  </p>
-                </div>
-                <Button secondary icon={<FaDirections />}>
-                  Get Directions
-                </Button>
-                <Button secondary icon={<FaPhone />}>
-                  Call Now
-                </Button>
-              </div>
-            </div>
-          ))}
-        </Section>
-      )}
+
     </PageLayout>
   );
 };

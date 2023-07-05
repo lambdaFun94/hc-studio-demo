@@ -34,12 +34,9 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = (
   };
 };
 
-const SearchResultsPage: Template<TemplateRenderProps> = (data) => {
-  const { document } = data;
-  const { streamOutput } = document;
-
+const SearchResultsPage: Template<TemplateRenderProps> = ({ document }) => {
   return (
-    <PageLayout title="All Doctors" fullWidth>
+    <PageLayout title="All Doctors" fullWidth={true}>
       <DoctorVerticalSearch />
     </PageLayout>
   );
