@@ -2044,10 +2044,10 @@
     "@yext/components-tsx-geo" "^1.0.3"
     typescript "^4.7.3"
 
-"@yext/pages@^1.0.0-beta.14", "@yext/pages@^1.0.0-beta.23":
+"@yext/pages@^1.0.0-beta.14", "@yext/pages@https://github.com/mkilpatrick/pagesjs-sumo-demo/raw/master/yext-pages-1.0.0-beta.23.1.tgz":
   version "1.0.0-beta.23"
-  resolved "https://registry.npmjs.org/@yext/pages/-/pages-1.0.0-beta.23.tgz"
-  integrity sha512-hgV+2WJb0dpjm8TuFvBOxKcDfzktIqSCS1Nqa4i+TxfUZbOQlDsaRuBLHzWoNyO2lneX6h/NVvrCMOd0Ox403A==
+  resolved "https://github.com/mkilpatrick/pagesjs-sumo-demo/raw/master/yext-pages-1.0.0-beta.23.1.tgz"
+  integrity sha512-j525oVLmSpnH8wH7dpaZ9ewVWGBNsVTo/Xe5m8VhTh1Efakl7yGvZKpqYImgEyl3ok/pv3Z4sfEPGS0WsaAjcA==
   dependencies:
     "@yext/analytics" "^0.3.0"
     "@yext/components-tsx-geo" "^1.0.3"
