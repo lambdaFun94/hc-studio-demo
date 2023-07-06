@@ -88,6 +88,7 @@ const DoctorPage: Template<TemplateRenderProps> = ({ document }) => {
       breadcrumbs={[{ label: "All Doctors", href: "/doctors" }]}
     >
       <GridSection title="Specialties" items={doctor.c_specialty} />
+<<<<<<< HEAD
       {doctor.c_locationsPracticingAt && (
         <Section title="Practicing At" className="flex flex-col gap-4">
           {doctor.c_locationsPracticingAt.map((l) => (
@@ -121,6 +122,9 @@ const DoctorPage: Template<TemplateRenderProps> = ({ document }) => {
           ))}
         </Section>
       )}
+=======
+
+>>>>>>> avs-studiotize
     </PageLayout>
   );
 };

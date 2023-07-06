@@ -1,3 +1,5 @@
+import * as React from "react";
+
 type Thumbnail = {
   height: number;
   width: number;
@@ -16,11 +18,13 @@ type ImageObj = {
   image: Image;
 };
 
-type PhotoGallery = {
+export interface PhotoGalleryProps {
   photoGallery: Array<ImageObj>;
+  display: boolean;
 };
 
-const PhotoGallery = (props: PhotoGallery, display: boolean) => {
+
+const PhotoGallery = (props: PhotoGalleryProps) => {
   const { photoGallery } = props;
   const images = photoGallery.map((element) => (
     <div>

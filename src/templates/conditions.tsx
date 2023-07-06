@@ -7,45 +7,23 @@ import {
   TemplateProps,
   TemplateRenderProps,
 } from "@yext/pages";
-import * as React from "react";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
 import "../index.css";
 import { Taxonomy_Condition } from "../types/kg";
 
-/**
- * Required when Knowledge Graph data is used for a template.
- */
 export const config: TemplateConfig = {
   stream: {
     $id: "conditions-fad-234",
-    // Specifies the exact data that each generated document will contain. This data is passed in
-    // directly as props to the default exported function.
-    fields: [
-      "name",
-      "meta",
-      "id",
-      "uid",
-      "slug",
-      "taxonomy_synonyms",
-      "c_relatedSpecialties.id",
-      "c_relatedSpecialties.name",
-      "c_relatedSpecialties.slug",
-    ],
-    filter: {
-      entityTypes: ["taxonomy_conditionTreated"],
-    },
-    // The entity language profiles that documents will be generated for.
-    localization: {
-      locales: ["en"],
-      primary: false,
-    },
+    localization: { locales: ["en"], primary: false },
+    fields: ["name", "description", "slug"],
+    filter: { entityTypes: ["taxonomy_conditionTreated"] },
   },
 };
-
-export const getPath: GetPath<TemplateProps> = ({ document }) => {
-  const condition = document as Taxonomy_Condition;
-  return condition.slug;
+export const getPath: GetPath<TemplateProps> = ({
+  document,
+}: TemplateProps) => {
+  return document.slug;
 };
 
 export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
@@ -59,18 +37,43 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   };
 };
 
-const ConditionsPage: Template<TemplateRenderProps> = ({ document }) => {
-  const condition = document as Taxonomy_Condition;
-  const subtitle =
-    condition.taxonomy_synonyms?.length > 0
-      ? `aka ${condition.taxonomy_synonyms?.join(", ")}`
-      : undefined;
-
+const ConditionsPage: Template<TemplateRenderProps> = ({
+  document,
+}: TemplateProps) => {
+  const { name, description, slug, c_relatedSpecialties } = document;
   return (
-    <PageLayout title={condition.name} subtitle={subtitle}>
+    <PageLayout
+      title={`${document.name}`}
+      subtitle={`${document.description}`}
+      hideTitle={false}
+      noPadding={false}
+      fullWidth={false}
+      image={{ url: ``, width: 0, height: 0, thumbnails: [] }}
+    >
       <GridSection
         title="Related Specialties"
-        items={condition.c_relatedSpecialties}
+        items={[
+          {
+            id: "",
+            name: `Related Speciality 1`,
+            slug: `/spec1`,
+            image: {
+              height: 0,
+              width: 0,
+              url: `${document.siteDomain}`,
+              thumbnails: [],
+            },
+            subtitle: `See a doctor Fast`,
+          },
+          {
+            id: "",
+            name: `Speicality 2`,
+            slug: "",
+            image: { height: 0, width: 0, url: "", thumbnails: [] },
+            subtitle: `Get to the ER`,
+          },
+        ]}
+        className={``}
       />
     </PageLayout>
   );
