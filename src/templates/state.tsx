@@ -42,10 +42,10 @@ const StateDirectory: Template<TemplateRenderProps> = ({
   return (
     <PageLayout
       title={`Health Care Facilities in ${c_addressRegionDisplayName}`}
-      breadcrumbs={[
-        { label: "All Locations", href: "/locations" },
-        ...buildBreadCrumbs(dm_directoryParents, relativePrefixToRoot),
-      ]}
+      // breadcrumbs={[
+      //   { label: "All Locations", href: "/locations" },
+      //   ...buildBreadCrumbs(dm_directoryParents, relativePrefixToRoot),
+      // ]}
     ></PageLayout>
   );
 };

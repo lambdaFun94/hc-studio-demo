@@ -7,13 +7,8 @@ import {
   TemplateProps,
   TemplateRenderProps,
 } from "@yext/pages";
-import * as React from "react";
-import { FaDirections, FaPhone } from "react-icons/fa";
-import Button from "../components/Button";
-import GridSection from "../components/GridSection";
-import PageLayout from "../components/PageLayout";
-import Section from "../components/Section";
-import StaticMap from "../components/StaticMap";
+import Container from "../components/Container";
+import HStack from "../components/HStack";
 import "../index.css";
 import {
   HealthcareProfessional,
@@ -23,41 +18,11 @@ import {
 export const config: TemplateConfig = {
   stream: {
     $id: "pros-doctors-stream-234",
-    fields: [
-      "name",
-      "meta",
-      "id",
-      "uid",
-      "address",
-      "firstName",
-      "lastName",
-      "middleName",
-      "npi",
-      // "mainPhone",
-      "c_specialty.id",
-      "c_specialty.name",
-      "c_specialty.slug",
-      "insuranceAccepted",
-      "admittingHospitals",
-      "c_locationsPracticingAt.id",
-      "c_locationsPracticingAt.name",
-      "c_locationsPracticingAt.slug",
-      "c_locationsPracticingAt.address",
-      "c_locationsPracticingAt.geocodedCoordinate",
-      "headshot",
-      "slug",
-    ],
-    filter: {
-      entityTypes: ["ce_doctor"],
-    },
-    // The entity language profiles that documents will be generated for.
-    localization: {
-      locales: ["en"],
-      primary: false,
-    },
+    localization: { locales: ["en"], primary: false },
+    fields: ["slug"],
+    filter: { entityTypes: ["ce_doctor"] },
   },
 };
-
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
   const doctor = document as HealthcareProfessional &
     HealthcareProfessionalCustomFields;
@@ -79,14 +44,19 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
 const DoctorPage: Template<TemplateRenderProps> = ({ document }) => {
   const doctor = document as HealthcareProfessional &
     HealthcareProfessionalCustomFields;
-
   return (
-    <PageLayout
-      title={doctor.name}
-      subtitle={`NPI: ${doctor.npi}`}
-      image={doctor.headshot}
-      // breadcrumbs={[{ label: "All Doctors", href: "/doctors" }]}
-    ></PageLayout>
+    <Container>
+      <HStack>
+        <Image
+          image={{
+            height: 375,
+            url: "https://a.mktgcdn.com/p/jwn23ktRk6uKz65OR7hl_SYIzvWgsk1XoCSFESbCgmY/300x375.jpg",
+            width: 375,
+            alternateText: ``,
+          }}
+        />
+      </HStack>
+    </Container>
   );
 };
 

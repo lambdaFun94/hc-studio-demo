@@ -76,7 +76,7 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
 };
 
 export const transformProps: TransformProps<TemplateProps> = async (input) => {
-  var specialty = input.document as Taxonomy_Specialty;
+  const specialty = input.document as Taxonomy_Specialty;
 
   input.document = sortProps(specialty, [
     "c_providersWithSpecialty",
@@ -98,30 +98,30 @@ const SpecialtyPage: Template<TemplateRenderProps> = ({ document }) => {
 
   return (
     <PageLayout title={specialty.name} subtitle={subtitle}>
-      <GridSection
+      {/* <GridSection
         title="Related Conditions"
         items={specialty.taxonomy_relatedConditions}
-      />
-      <GridSection
+      /> */}
+      {/* <GridSection
         title={`Providers Who Specialize in ${specialty.name}`}
         items={specialty.c_providersWithSpecialty?.map((d) => ({
           ...d,
           image: d.headshot,
           subtitle: d.c_specialty?.map((s) => s.name)?.join(", "),
         }))}
-      />
-      <GridSection
+      /> */}
+      {/* <GridSection
         title="Subspecialties"
         items={specialty.taxonomy_subspecialties}
-      />
-      <GridSection
+      /> */}
+      {/* <GridSection
         title="Related Procedures"
         items={specialty.c_relatedProcedures2}
-      />
-      <GridSection
+      /> */}
+      {/* <GridSection
         title="Reasons for Visit"
         items={specialty.taxonomy_relatedReasonsForVisit}
-      />
+      /> */}
     </PageLayout>
   );
 };
