@@ -40,14 +40,14 @@ const PageLayout = ({
           <BreadCrumbs items={breadcrumbs} pageTitle={title} />
         )}
         <div className="flex gap-4">
-          {image && (
+          {/* {image && (
             <Img
               image={image}
               width={200}
               layout="fixed"
               className="rounded-md drop-shadow-md mb-4"
             />
-          )}
+          )} */}
           <div>
             {!hideTitle && (
               <div className="text-4xl font-medium mb-4 mt-4">{title}</div>

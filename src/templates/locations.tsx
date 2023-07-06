@@ -10,12 +10,15 @@ import {
 import * as React from "react";
 import { FaDirections, FaPhone } from "react-icons/fa";
 import Button from "../components/Button";
-import { DirectoryChild, directoryListFields } from "../components/Directory/DirectoryList";
 import GridSection from "../components/GridSection";
 import PageLayout from "../components/PageLayout";
 import "../index.css";
 import { HealthcareFacility } from "../types/kg";
-import { buildBreadCrumbs, defaultHeadConfig, staticMapUrl } from "../utilities";
+import {
+  buildBreadCrumbs,
+  defaultHeadConfig,
+  staticMapUrl,
+} from "../utilities";
 
 export const config: TemplateConfig = {
   stream: {
@@ -32,7 +35,6 @@ export const config: TemplateConfig = {
       "c_doctorsPracticingHere.id",
       "c_doctorsPracticingHere.name",
       "c_doctorsPracticingHere.slug",
-      ...directoryListFields
     ],
     filter: {
       entityTypes: ["healthcareFacility"],
@@ -62,7 +64,10 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
   };
 };
 
-const LocationPage: Template<TemplateRenderProps> = ({ relativePrefixToRoot, document }) => {
+const LocationPage: Template<TemplateRenderProps> = ({
+  relativePrefixToRoot,
+  document,
+}) => {
   const location = document as HealthcareFacility;
   const { dm_directoryParents } = document;
   const { geocodedCoordinate, name, address, c_doctorsPracticingHere } =
@@ -73,8 +78,9 @@ const LocationPage: Template<TemplateRenderProps> = ({ relativePrefixToRoot, doc
       title={location.name}
       breadcrumbs={[
         { label: "All Locations", href: "/locations" },
-        ...buildBreadCrumbs(dm_directoryParents, relativePrefixToRoot)
-      ]}>
+        ...buildBreadCrumbs(dm_directoryParents, relativePrefixToRoot),
+      ]}
+    >
       <div className="flex gap-4">
         {geocodedCoordinate && (
           <img
