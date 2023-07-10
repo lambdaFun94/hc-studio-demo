@@ -1,16 +1,17 @@
 import * as React from "react";
 import Container, { ContainerProps } from "../atoms/Container";
+import { TailwindSize } from "../../types/tailwind";
+import { HexColor } from "@yext/studio";
 
 type SpacingSize = "xs" | "s" | "md" | "lg" | "xl";
 export interface HStackProps {
   children?: React.ReactNode;
   spacing?: SpacingSize;
-  containerProps?: Omit<ContainerProps, "children">;
+  containerProps?: ContainerProps;
 }
 
 export const initialProps: HStackProps = {
   spacing: "s",
-  containerProps: {},
 };
 
 const spacingMap: Record<SpacingSize, string> = {

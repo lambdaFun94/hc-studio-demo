@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "features": "pages generate features",
     "clean": "rm -rf .artifact-output .yext/ dist/ localData sites-rendered-output",
-    "studio": "npm run features && yext pages generate-test-data -a && studio"
+    "studio": "npm run features && studio"
   },
   "engines": {
     "node": "18"

@@ -1,35 +1,34 @@
 import * as React from "react";
 
-export default function NavBar() {
+export interface NavBarProps {
+  labels: string[];
+}
+
+export const initialProps: NavBarProps = {
+  labels: ["About", "Insurances", "Locations"],
+};
+
+export default function NavBar({ labels }: NavBarProps) {
+  const [selected, setSelected] = React.useState(0);
+
   return (
     <div className="mx-auto max-w-7xl px-8">
       <div className="flex h-16 justify-between">
         <div className="flex">
           <div className="ml-6 flex space-x-8">
-            <a
-              href="#"
-              className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
-            >
-              Dashboard
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center border-b-2 hover:border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-500  hover:text-gray-700"
-            >
-              Team
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center border-b-2 hover:border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-500  hover:text-gray-700"
-            >
-              Projects
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center border-b-2 hover:border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-500  hover:text-gray-700"
-            >
-              Calendar
-            </a>
+            {/* {labels.map((label, index) => (
+              <button
+                key={index}
+                className={`${
+                  index === selected
+                    ? "border-indigo-500 text-gray-900"
+                    : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                onClick={() => setSelected(index)}
+              >
+                {label}
+              </button>
+            ))} */}
           </div>
         </div>
       </div>

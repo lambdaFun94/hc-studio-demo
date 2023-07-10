@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   GetHeadConfig,
   GetPath,
@@ -12,6 +13,9 @@ import SellingPoints from "../components/SellingPoints";
 import Container from "../components/atoms/Container";
 import Layout from "../components/atoms/Layout";
 import MultilineTextField from "../components/atoms/MultilineTextField";
+import StaticMap from "../components/atoms/StaticMap";
+import Address from "../components/molecules/Address";
+import HStack from "../components/molecules/HStack";
 import Section from "../components/molecules/Section";
 import "../index.css";
 import {
@@ -23,7 +27,13 @@ export const config: TemplateConfig = {
   stream: {
     $id: "doctors",
     localization: { locales: ["en"], primary: false },
-    fields: ["slug"],
+    fields: [
+      "c_description",
+      "slug",
+      "c_locationsPracticingAt.address",
+      "c_locationsPracticingAt.geocodedCoordinate",
+      "name",
+    ],
     filter: { entityTypes: ["ce_doctor"] },
   },
 };
@@ -153,13 +163,97 @@ const DoctorPage: Template<TemplateRenderProps> = ({
         }}
       >
         <MultilineTextField
-          text="Dr. Schleider is in network with these insurances: Geha PPO, Meritain PPO, and United Health care student services. any insurances not listed is considered out of network and subject to out of network pricing. Dr. Schleider, welcomes all new patients to the practice before psychiatrist consults to make sure patients have had a complete medical evaluation before any psychiatric assessment is done. Dr. Schleider is a family doctor and addiction medicine doctor. He founded and runs his psychiatry based medical practice and has special interest in mental health.\n\nDr. Natan Schleider attended medical school at Columbia University Health Sciences in Collaboration with Ben Gurion University of the Negev where Dr. Schleider obtained his Medical Doctorate (2002).\n\nResidency training in Family Medicine was completed at Overlook Hospital in Summit, New Jersey (2004). Dr. Natan Schleider, M.D. had the honor of Chief Resident at Overlook Hospital (2005).\n\nDr. Natan Schleider, M.D. has an unrestricted license to practice medicine in New York State.\n\nAcademies and societies with whom Dr. Natan Schleider, M.D., actively participate, include the American Academy of Family Physicians, American Psychiatric Association, and the American Society of Addiction Medicine."
+          text={`${document.c_description}`}
           fontSize="md"
           fontFamily="sans"
           fontWeight="normal"
           fontStyle="normal"
           textColor="#111827"
         />
+      </Section>
+      <Section
+        titleProps={{
+          text: `Location`,
+          fontFamily: "sans",
+          fontSize: "xl",
+          fontStyle: "normal",
+          fontWeight: "bold",
+          textColor: "#111827",
+        }}
+        innerContainerProps={{
+          backgroundColor: "#FFFFFF",
+          marginY: "",
+          marginX: "",
+          marginRight: "",
+          marginLeft: "",
+          marginBottom: "",
+          marginTop: "",
+          margin: "",
+          padding: "",
+          paddingY: "",
+          paddingX: "",
+          paddingBottom: "",
+          paddingTop: "",
+          paddingRight: "",
+          paddingLeft: "",
+        }}
+        outerContainerProps={{
+          backgroundColor: "#FFFFFF",
+          marginY: "",
+          marginX: "",
+          marginRight: "",
+          marginLeft: "",
+          marginBottom: "",
+          marginTop: "",
+          margin: "",
+          padding: "12",
+          paddingY: "",
+          paddingX: "",
+          paddingBottom: "",
+          paddingTop: "",
+          paddingRight: "",
+          paddingLeft: "",
+        }}
+      >
+        <HStack
+          spacing="s"
+          containerProps={{
+            backgroundColor: "#FFFFFF",
+            marginY: "",
+            marginX: "",
+            marginRight: "",
+            marginLeft: "",
+            marginBottom: "",
+            marginTop: "",
+            margin: "",
+            padding: "",
+            paddingY: "",
+            paddingX: "",
+            paddingBottom: "",
+            paddingTop: "",
+            paddingRight: "",
+            paddingLeft: "",
+          }}
+        >
+          <StaticMap
+            coordinates={{ latitude: 40.7128, longitude: 74.006 }}
+            width={450}
+            height={300}
+            className={``}
+          />
+          <Address
+            address={{
+              city: "New York",
+              countryCode: "US",
+              line1: "123 Main St",
+              line2: "Apt 1",
+              postalCode: "10001",
+              region: "NY",
+            }}
+            geocodedCoordinates={{ latitude: 40.7484, longitude: 73.9857 }}
+            showDirectionsLink={true}
+          />
+        </HStack>
       </Section>
     </Layout>
   );

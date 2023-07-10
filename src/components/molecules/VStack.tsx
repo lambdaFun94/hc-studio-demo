@@ -1,9 +1,11 @@
 import * as React from "react";
 import Container, { ContainerProps } from "../atoms/Container";
+import { TailwindSize } from "../../types/tailwind";
+import { HexColor } from "@yext/studio";
 
 export interface VStackProps {
   children?: React.ReactNode;
-  containerProps?: Omit<ContainerProps, "children">;
+  containerProps?: ContainerProps;
 }
 
 export const initialProps: VStackProps = {
