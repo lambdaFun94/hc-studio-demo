@@ -16,7 +16,7 @@ export default function NavBar({ labels }: NavBarProps) {
       <div className="flex h-16 justify-between">
         <div className="flex">
           <div className="ml-6 flex space-x-8">
-            {/* {labels.map((label, index) => (
+            {labels.map((label, index) => (
               <button
                 key={index}
                 className={`${
@@ -28,7 +28,7 @@ export default function NavBar({ labels }: NavBarProps) {
               >
                 {label}
               </button>
-            ))} */}
+            ))}
           </div>
         </div>
       </div>
