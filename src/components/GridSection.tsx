@@ -4,7 +4,6 @@ import { useState } from "react";
 import Card from "./Card";
 import Grid from "./Grid";
 import Img, { Image } from "./Img";
-import Section from "./Section";
 
 type Props = {
   //Insert Props Here
@@ -26,10 +25,12 @@ type Item = {
 };
 
 const selectName = (item: Item, isRoot?: boolean) => {
-  const name = isRoot ? item.c_addressRegionDisplayName : item.name
-  const count = item.dm_directoryChildrenCount ? `(${item.dm_directoryChildrenCount})` : ''
-  return `${name} ${count}`
-}
+  const name = isRoot ? item.c_addressRegionDisplayName : item.name;
+  const count = item.dm_directoryChildrenCount
+    ? `(${item.dm_directoryChildrenCount})`
+    : "";
+  return `${name} ${count}`;
+};
 
 const GridSection = ({ className, title, items, isRoot }: Props) => {
   const [showAll, setShowAll] = useState(false);
@@ -37,7 +38,8 @@ const GridSection = ({ className, title, items, isRoot }: Props) => {
   if (!items?.length || items.length === 0) return null;
   return (
     <div className={cx(className)}>
-      <Section title={title}>
+      <div>
+        <div className="text-xl font-medium mb-2">{title}</div>
         <Grid>
           {items
             ?.filter((item, i) => {
@@ -85,7 +87,7 @@ const GridSection = ({ className, title, items, isRoot }: Props) => {
             </button>
           </div>
         )}
-      </Section>
+      </div>
     </div>
   );
 };
