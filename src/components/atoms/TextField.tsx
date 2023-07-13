@@ -1,6 +1,5 @@
 import * as React from "react";
 import { HexColor } from "@yext/studio";
-// import { TextFieldProps } from "../../types/component-props";
 
 export interface TextFieldProps {
   text?: string;

@@ -235,6 +235,7 @@ import {
 import { IconType } from "../../types/icons";
 
 import { HexColor } from "@yext/studio";
+import { IconProps } from "./Icon";
 
 const solidIconMap: {
   [key in IconType]: React.ElementType;
@@ -471,15 +472,21 @@ const solidIconMap: {
   "Zoom Out": ZoomOutIcon,
 };
 
+export const initialProps: Required<IconProps> = {
+  name: "Star",
+  style: "solid",
+  color: "#111827",
+};
+
 export default function SolidIcon({
   name,
   classname,
   color,
 }: {
-  name: IconType;
+  name?: IconType;
   classname?: string;
   color?: HexColor;
 }) {
-  const IconComponent = solidIconMap[name];
+  const IconComponent = solidIconMap[name ?? "Star"];
   return <IconComponent className={classname} style={{ fill: color }} />;
 }

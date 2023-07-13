@@ -35,24 +35,14 @@ export default function SellingPoints({ sellingPoints }: SellingPointsProps) {
     >
       {sellingPoints.map((sellingPoint, i) => (
         <HStack key={`sp-${i}`} spacing="s">
-          <Icon name={sellingPoint.icon} style="solid" color="base" />
+          <Icon name={sellingPoint.icon} style="solid" />
           <VStack>
             <TextField
               text={sellingPoint.title}
-              fontSize="md"
-              fontFamily="sans"
-              fontWeight="normal"
-              fontStyle="normal"
+              fontWeight="semibold"
               textColor="#111827"
             />
-            <TextField
-              text={sellingPoint.description}
-              fontSize="md"
-              fontFamily="sans"
-              fontWeight="normal"
-              fontStyle="normal"
-              textColor="#111827"
-            />
+            <TextField text={sellingPoint.description} textColor="#111827" />
           </VStack>
         </HStack>
       ))}

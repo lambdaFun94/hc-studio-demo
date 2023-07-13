@@ -11,6 +11,10 @@ export const initialProps: NavBarProps = {
 export default function NavBar({ labels }: NavBarProps) {
   const [selected, setSelected] = React.useState(0);
 
+  const handleSelect = (index: number) => {
+    setSelected(index);
+  };
+
   return (
     <div className="mx-auto max-w-7xl px-8">
       <div className="flex h-16 justify-between">
@@ -21,10 +25,10 @@ export default function NavBar({ labels }: NavBarProps) {
                 key={index}
                 className={`${
                   index === selected
-                    ? "border-indigo-500 text-gray-900"
+                    ? "border-gray-900 text-gray-900"
                     : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"
                 } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
-                onClick={() => setSelected(index)}
+                onClick={() => handleSelect(index)}
               >
                 {label}
               </button>

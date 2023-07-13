@@ -475,10 +475,10 @@ export default function OutlineIcon({
   classname,
   color,
 }: {
-  name: IconType;
+  name?: IconType;
   classname?: string;
   color?: HexColor;
 }) {
-  const IconComponent = outlineIconMap[name];
+  const IconComponent = outlineIconMap[name ?? "Star"];
   return <IconComponent className={classname} style={{ fill: color }} />;
 }

@@ -6,7 +6,7 @@ import { HexColor } from "@yext/studio";
 
 // TODO: Why don't arbitrary colors work with Icons and the text-[color] class?
 
-interface IconProps {
+export interface IconProps {
   name?: IconType;
   style?: "solid" | "outline";
   color?: HexColor;
@@ -22,15 +22,8 @@ export const initialProps: Required<IconProps> = {
 // TODO: Figure out sizing
 export default function Icon({ name, style, color }: IconProps) {
   return style === "solid" ? (
-    <SolidIcon
-      name={name ?? initialProps.name}
-      classname={`h-5 w-5`}
-      color={color}
-    />
+    <SolidIcon name={name} classname={`h-5 w-5`} color={color} />
   ) : (
-    <OutlineIcon
-      name={name ?? initialProps.name}
-      classname={`h-5 w-5 ${color}`}
-    />
+    <OutlineIcon name={name} classname={`h-5 w-5 ${color}`} />
   );
 }
